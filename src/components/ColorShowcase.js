@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Palette, Eye, Heart, Star, CheckCircle } from 'lucide-react';
+import { Palette, Eye, Heart, CheckCircle } from 'lucide-react';
 
 const ColorShowcase = () => {
   const colorPalette = [

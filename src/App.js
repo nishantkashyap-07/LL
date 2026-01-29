@@ -28,7 +28,7 @@ function App() {
         <ThemeProvider>
           <AuthProvider>
             <Router>
-              <div className="min-h-screen bg-white dark:bg-neutral-950">
+              <div className="min-h-screen bg-neutral-950 dark">
                 <Navbar />
                 <main>
                   <Routes>
