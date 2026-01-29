@@ -245,7 +245,7 @@ const BrowseVehicles = () => {
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 font-medium px-6 py-3 rounded-lg transition-all duration-300 border border-neutral-200 dark:border-neutral-700 flex items-center space-x-2"
+              className="bg-neutral-800/50 hover:bg-neutral-700/50 text-white font-medium px-6 py-3 rounded-2xl transition-all duration-300 backdrop-blur-sm border border-neutral-700/30 flex items-center space-x-2"
             >
               <SlidersHorizontal size={20} />
               <span>Filters</span>

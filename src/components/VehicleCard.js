@@ -2,9 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
-  Star, Eye, Fuel, Users, Settings, MapPin, Shield 
+  Star, Fuel, Users, Settings, MapPin, Shield, Heart
 } from 'lucide-react';
-import WishlistButton from '../components/features/WishlistButton';
 
 const VehicleCard = ({ vehicle }) => {
   const getVehicleIcon = (type) => {
@@ -23,169 +22,138 @@ const VehicleCard = ({ vehicle }) => {
   const getVehicleColor = (type) => {
     switch (type) {
       case 'bike':
-        return 'from-primary-500 to-primary-600';
+        return 'bg-blue-500';
       case 'scooty':
-        return 'from-secondary-500 to-secondary-600';
+        return 'bg-green-500';
       case 'car':
-        return 'from-accent-500 to-accent-600';
+        return 'bg-purple-500';
       default:
-        return 'from-primary-500 to-primary-600';
+        return 'bg-blue-500';
     }
   };
 
   return (
     <motion.div
-      whileHover={{ y: -8 }}
-      className="card-elegant group overflow-hidden hover-elegant"
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className="bg-neutral-900/60 backdrop-blur-xl border border-neutral-800/50 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300"
     >
-      {/* Image */}
-      <div className="relative overflow-hidden rounded-xl mb-6">
+      {/* Image Container */}
+      <div className="relative overflow-hidden">
         <img
           src={vehicle.image}
           alt={vehicle.name}
-          className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-64 object-cover"
         />
         
-        {/* Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
         
         {/* Vehicle Type Badge */}
         <div className="absolute top-4 left-4">
-          <span className={`bg-gradient-to-r ${getVehicleColor(vehicle.type)} text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg`}>
-            {getVehicleIcon(vehicle.type)} {vehicle.type.charAt(0).toUpperCase() + vehicle.type.slice(1)}
-          </span>
+          <div className={`${getVehicleColor(vehicle.type)} px-3 py-1.5 rounded-full flex items-center space-x-1.5`}>
+            <span className="text-sm">{getVehicleIcon(vehicle.type)}</span>
+            <span className="text-white text-sm font-medium capitalize">{vehicle.type}</span>
+          </div>
         </div>
         
         {/* Wishlist Button */}
         <div className="absolute top-4 right-4">
-          <WishlistButton vehicleId={vehicle.id} />
+          <button className="w-10 h-10 bg-black/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/10 hover:bg-black/30 transition-all">
+            <Heart className="w-5 h-5 text-white" />
+          </button>
         </div>
 
-        {/* Quick Actions - Visible on Hover */}
-        <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-          <div className="flex space-x-3">
-            <Link
-              to={`/vehicle/${vehicle.id}`}
-              className="flex-1 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm text-neutral-900 dark:text-neutral-100 py-3 px-4 rounded-lg font-medium text-center hover:bg-white dark:hover:bg-neutral-800 transition-all"
-            >
-              <Eye className="w-4 h-4 inline mr-2" />
-              View Details
-            </Link>
-            <Link
-              to={`/vehicle/${vehicle.id}?book=true`}
-              className="flex-1 bg-primary-900 dark:bg-primary-800 hover:bg-primary-800 dark:hover:bg-primary-700 text-white py-3 px-4 rounded-lg font-medium text-center transition-all shadow-elegant-md hover:shadow-elegant-lg tracking-wide text-xs uppercase"
-            >
-              Book Now
-            </Link>
+        {/* Status Indicators */}
+        <div className="absolute bottom-4 left-4 flex items-center space-x-2">
+          <div className="flex items-center bg-black/30 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
+            <div className="w-2 h-2 bg-green-400 rounded-full mr-1.5"></div>
+            <span className="text-white text-xs font-medium">Available</span>
+          </div>
+          <div className="flex items-center bg-black/30 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
+            <Shield className="w-3 h-3 text-green-400 mr-1" />
+            <span className="text-white text-xs font-medium">Verified</span>
           </div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="space-y-6">
+      <div className="p-6 space-y-4">
         {/* Header */}
         <div className="flex justify-between items-start">
           <div className="flex-1">
-            <h3 className="text-xl font-display font-semibold text-neutral-900 dark:text-white group-hover:text-primary-500 transition-colors mb-2">
+            <h3 className="text-xl font-semibold text-white mb-1 tracking-tight">
               {vehicle.name}
             </h3>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3">
               <div className="flex items-center">
-                <Star className="w-4 h-4 text-warning-400 fill-current" />
-                <span className="text-sm font-semibold ml-1">{vehicle.rating}</span>
-                <span className="text-sm text-neutral-500 dark:text-neutral-400 ml-1">
-                  ({vehicle.reviews})
-                </span>
+                <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                <span className="text-sm font-medium text-white ml-1">{vehicle.rating}</span>
+                <span className="text-sm text-neutral-400 ml-1">({vehicle.reviews})</span>
               </div>
               {vehicle.location && (
-                <div className="flex items-center text-sm text-neutral-500 dark:text-neutral-400">
-                  <MapPin className="w-3 h-3 mr-1" />
+                <div className="flex items-center text-sm text-neutral-400">
+                  <MapPin className="w-3.5 h-3.5 mr-1" />
                   <span>{vehicle.location}</span>
                 </div>
               )}
             </div>
           </div>
           <div className="text-right">
-            <div className="text-2xl font-bold text-primary-500">
+            <div className="text-2xl font-bold text-white">
               ₹{vehicle.price}
             </div>
-            <div className="text-sm text-neutral-500 dark:text-neutral-400">per day</div>
+            <div className="text-sm text-neutral-400 font-medium">per day</div>
           </div>
         </div>
 
-        {/* Features */}
-        {vehicle.features && (
-          <div className="flex flex-wrap gap-2">
-            {vehicle.features.slice(0, 3).map((feature, index) => (
-              <span
-                key={index}
-                className="px-3 py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 text-xs font-medium rounded-full border border-primary-200 dark:border-primary-800"
-              >
-                {feature}
-              </span>
-            ))}
-            {vehicle.features.length > 3 && (
-              <span className="px-3 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 text-xs font-medium rounded-full">
-                +{vehicle.features.length - 3} more
-              </span>
-            )}
-          </div>
-        )}
-
         {/* Specifications */}
         {vehicle.specs && (
-          <div className="grid grid-cols-3 gap-4 py-4 border-t border-neutral-200 dark:border-neutral-700">
+          <div className="grid grid-cols-3 gap-4 py-4 border-t border-neutral-800">
             {vehicle.specs.fuel && (
-              <div className="flex flex-col items-center text-center">
-                <Fuel className="w-4 h-4 text-neutral-400 mb-1" />
-                <span className="text-xs text-neutral-500 dark:text-neutral-400">Fuel</span>
-                <span className="text-sm font-medium">{vehicle.specs.fuel}</span>
-              </div>
-            )}
-            {vehicle.specs.seats && (
-              <div className="flex flex-col items-center text-center">
-                <Users className="w-4 h-4 text-neutral-400 mb-1" />
-                <span className="text-xs text-neutral-500 dark:text-neutral-400">Seats</span>
-                <span className="text-sm font-medium">{vehicle.specs.seats}</span>
+              <div className="text-center">
+                <div className="w-8 h-8 bg-neutral-800 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <Fuel className="w-4 h-4 text-neutral-400" />
+                </div>
+                <div className="text-xs text-neutral-500 mb-1">Fuel</div>
+                <div className="text-sm font-medium text-white">{vehicle.specs.fuel}</div>
               </div>
             )}
             {vehicle.specs.transmission && (
-              <div className="flex flex-col items-center text-center">
-                <Settings className="w-4 h-4 text-neutral-400 mb-1" />
-                <span className="text-xs text-neutral-500 dark:text-neutral-400">Type</span>
-                <span className="text-sm font-medium">{vehicle.specs.transmission}</span>
+              <div className="text-center">
+                <div className="w-8 h-8 bg-neutral-800 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <Settings className="w-4 h-4 text-neutral-400" />
+                </div>
+                <div className="text-xs text-neutral-500 mb-1">Transmission</div>
+                <div className="text-sm font-medium text-white">{vehicle.specs.transmission}</div>
+              </div>
+            )}
+            {vehicle.specs.seats && (
+              <div className="text-center">
+                <div className="w-8 h-8 bg-neutral-800 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <Users className="w-4 h-4 text-neutral-400" />
+                </div>
+                <div className="text-xs text-neutral-500 mb-1">Seats</div>
+                <div className="text-sm font-medium text-white">{vehicle.specs.seats} Seater</div>
               </div>
             )}
           </div>
         )}
 
-        {/* Trust Indicators */}
-        <div className="flex items-center justify-between pt-4 border-t border-neutral-200 dark:border-neutral-700">
-          <div className="flex items-center space-x-4 text-xs text-neutral-500 dark:text-neutral-400">
-            <div className="flex items-center">
-              <Shield className="w-3 h-3 mr-1 text-success-500" />
-              <span>Verified</span>
-            </div>
-            <div className="flex items-center">
-              <span className="w-2 h-2 bg-success-500 rounded-full mr-1"></span>
-              <span>Available</span>
-            </div>
-          </div>
-          
-          <div className="flex space-x-2">
-            <Link
-              to={`/vehicle/${vehicle.id}`}
-              className="bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 font-medium px-6 py-3 rounded-lg transition-all duration-300 border border-neutral-200 dark:border-neutral-700 tracking-wide text-xs uppercase"
-            >
-              Details
-            </Link>
-            <Link
-              to={`/vehicle/${vehicle.id}?book=true`}
-              className="bg-primary-900 dark:bg-primary-800 hover:bg-primary-800 dark:hover:bg-primary-700 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 shadow-elegant hover:shadow-elegant-md tracking-wide text-xs uppercase"
-            >
-              Book
-            </Link>
-          </div>
+        {/* Action Buttons */}
+        <div className="flex space-x-3 pt-2">
+          <Link
+            to={`/vehicle/${vehicle.id}`}
+            className="flex-1 bg-neutral-800 hover:bg-neutral-700 text-white font-medium py-3 px-4 rounded-2xl transition-all duration-200 text-center text-sm"
+          >
+            Details
+          </Link>
+          <Link
+            to={`/vehicle/${vehicle.id}?book=true`}
+            className="flex-1 bg-white hover:bg-neutral-100 text-black font-semibold py-3 px-4 rounded-2xl transition-all duration-200 text-center text-sm"
+          >
+            Book Now
+          </Link>
         </div>
       </div>
     </motion.div>

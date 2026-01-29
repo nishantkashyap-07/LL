@@ -135,12 +135,12 @@ const LandingPage = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link 
                 to="/browse" 
-                className="bg-primary-900 dark:bg-primary-800 hover:bg-primary-800 dark:hover:bg-primary-700 text-white font-medium px-8 py-4 rounded-xl transition-all duration-300 shadow-elegant-md hover:shadow-elegant-lg tracking-wide text-xs uppercase flex items-center"
+                className="bg-white hover:bg-neutral-100 text-black font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl flex items-center"
               >
                 Explore Vehicles
                 <ArrowRight className="ml-3 w-5 h-5" />
               </Link>
-              <button className="bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 font-medium px-8 py-4 rounded-xl transition-all duration-300 border border-neutral-200 dark:border-neutral-700 tracking-wide text-xs uppercase flex items-center">
+              <button className="bg-neutral-800/50 hover:bg-neutral-700/50 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 backdrop-blur-sm border border-neutral-700/30 flex items-center">
                 <Phone className="mr-3 w-5 h-5" />
                 +91 98765 43210
               </button>
@@ -227,7 +227,7 @@ const LandingPage = () => {
           <div className="text-center">
             <Link 
               to="/browse" 
-              className="bg-primary-900 dark:bg-primary-800 hover:bg-primary-800 dark:hover:bg-primary-700 text-white font-medium px-8 py-4 rounded-xl transition-all duration-300 shadow-elegant-md hover:shadow-elegant-lg tracking-wide text-xs uppercase inline-flex items-center"
+              className="bg-white hover:bg-neutral-100 text-black font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center"
             >
               View All Vehicles
               <ArrowRight className="ml-3 w-5 h-5" />
@@ -408,16 +408,17 @@ const LandingPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 to="/signup" 
-                className="bg-primary-900 dark:bg-primary-800 hover:bg-primary-800 dark:hover:bg-primary-700 text-white font-medium px-8 py-4 rounded-xl transition-all duration-300 shadow-elegant-md hover:shadow-elegant-lg tracking-wide text-xs uppercase inline-flex items-center justify-center"
+                className="bg-white hover:bg-neutral-100 text-black font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center"
               >
                 Get Started Today
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <Link 
                 to="/browse" 
-                className="bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 font-medium px-8 py-4 rounded-xl transition-all duration-300 border border-neutral-200 dark:border-neutral-700 text-lg inline-flex items-center justify-center"
+                className="bg-neutral-800/50 hover:bg-neutral-700/50 text-white font-medium px-8 py-4 rounded-2xl transition-all duration-300 backdrop-blur-sm border border-neutral-700/30 inline-flex items-center justify-center"
               >
                 Browse Vehicles
+                <ArrowRight className="ml-3 w-5 h-5" />
               </Link>
             </div>
           </motion.div>

@@ -134,10 +134,10 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-primary-900 dark:bg-primary-800 hover:bg-primary-800 dark:hover:bg-primary-700 text-white font-medium px-8 py-4 rounded-xl transition-all duration-300 shadow-elegant-md hover:shadow-elegant-lg tracking-wide text-xs uppercase flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-white hover:bg-neutral-100 text-black font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
               ) : (
                 <>
                   Sign In
@@ -156,11 +156,11 @@ const Login = () => {
 
           {/* Social Login */}
           <div className="space-y-3">
-            <button className="w-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 font-medium px-6 py-3 rounded-lg transition-all duration-300 border border-neutral-200 dark:border-neutral-700 tracking-wide text-xs uppercase flex items-center justify-center">
+            <button className="w-full bg-neutral-800/50 hover:bg-neutral-700/50 text-white font-medium px-6 py-3 rounded-2xl transition-all duration-300 backdrop-blur-sm border border-neutral-700/30 flex items-center justify-center">
               <img src="/api/placeholder/20/20" alt="Google" className="w-5 h-5 mr-3" />
               Continue with Google
             </button>
-            <button className="w-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 font-medium px-6 py-3 rounded-lg transition-all duration-300 border border-neutral-200 dark:border-neutral-700 tracking-wide text-xs uppercase flex items-center justify-center">
+            <button className="w-full bg-neutral-800/50 hover:bg-neutral-700/50 text-white font-medium px-6 py-3 rounded-2xl transition-all duration-300 backdrop-blur-sm border border-neutral-700/30 flex items-center justify-center">
               <img src="/api/placeholder/20/20" alt="Facebook" className="w-5 h-5 mr-3" />
               Continue with Facebook
             </button>

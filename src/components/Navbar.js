@@ -120,20 +120,20 @@ const Navbar = () => {
                 </AnimatePresence>
               </div>
             ) : (
-              <div className="flex items-center space-x-4">
-                <Link 
-                  to="/login" 
-                  className="text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 font-medium px-6 py-3 rounded-xl transition-all duration-300"
-                >
-                  Sign In
-                </Link>
-                <Link 
-                  to="/signup" 
-                  className="bg-primary-900 dark:bg-primary-800 hover:bg-primary-800 dark:hover:bg-primary-700 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 shadow-elegant hover:shadow-elegant-md tracking-wide text-xs uppercase"
-                >
-                  Get Started
-                </Link>
-              </div>
+            <div className="flex items-center space-x-4">
+              <Link 
+                to="/login" 
+                className="text-neutral-400 hover:text-white font-medium px-6 py-3 rounded-2xl transition-all duration-300 hover:bg-neutral-800/50"
+              >
+                Sign In
+              </Link>
+              <Link 
+                to="/signup" 
+                className="bg-white hover:bg-neutral-100 text-black font-semibold px-6 py-3 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Get Started
+              </Link>
+            </div>
             )}
           </div>
 
@@ -211,7 +211,7 @@ const Navbar = () => {
                     </Link>
                     <button 
                       onClick={handleLogout} 
-                      className="bg-primary-900 dark:bg-primary-800 hover:bg-primary-800 dark:hover:bg-primary-700 text-white font-medium px-4 py-2 rounded-lg transition-all duration-300 shadow-elegant hover:shadow-elegant-md tracking-wide text-xs uppercase"
+                      className="bg-white hover:bg-neutral-100 text-black font-semibold px-4 py-2 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
                       Sign Out
                     </button>
@@ -220,14 +220,14 @@ const Navbar = () => {
                   <div className="flex items-center space-x-3">
                     <Link 
                       to="/login" 
-                      className="bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 font-medium px-4 py-2 rounded-lg transition-all duration-300 border border-neutral-200 dark:border-neutral-700" 
+                      className="bg-neutral-800/50 hover:bg-neutral-700/50 text-white font-medium px-4 py-2 rounded-2xl transition-all duration-300 backdrop-blur-sm border border-neutral-700/30" 
                       onClick={() => setIsOpen(false)}
                     >
                       Sign In
                     </Link>
                     <Link 
                       to="/signup" 
-                      className="bg-primary-900 dark:bg-primary-800 hover:bg-primary-800 dark:hover:bg-primary-700 text-white font-medium px-4 py-2 rounded-lg transition-all duration-300 shadow-elegant hover:shadow-elegant-md tracking-wide text-xs uppercase" 
+                      className="bg-white hover:bg-neutral-100 text-black font-semibold px-4 py-2 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl" 
                       onClick={() => setIsOpen(false)}
                     >
                       Get Started

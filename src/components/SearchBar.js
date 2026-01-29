@@ -30,12 +30,12 @@ const SearchBar = () => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="card-elegant max-w-6xl mx-auto"
+      className="bg-neutral-900/60 backdrop-blur-xl border border-neutral-800/50 rounded-3xl p-8 shadow-2xl max-w-6xl mx-auto"
     >
       <form onSubmit={handleSearch} className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Location */}
         <div className="lg:col-span-2">
-          <label className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
+          <label className="block text-sm font-semibold text-neutral-300 mb-3">
             Pickup Location
           </label>
           <div className="relative">
@@ -45,14 +45,14 @@ const SearchBar = () => {
               placeholder="Enter city or area..."
               value={searchData.location}
               onChange={(e) => setSearchData({ ...searchData, location: e.target.value })}
-              className="input-elegant input-with-icon"
+              className="w-full pl-12 pr-4 py-4 bg-neutral-800/50 border border-neutral-700/50 rounded-2xl focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all duration-300 text-white placeholder:text-neutral-400 backdrop-blur-sm"
             />
           </div>
         </div>
 
         {/* Pickup Date */}
         <div>
-          <label className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
+          <label className="block text-sm font-semibold text-neutral-300 mb-3">
             Pickup Date
           </label>
           <div className="relative">
@@ -61,7 +61,7 @@ const SearchBar = () => {
               type="date"
               value={searchData.pickupDate}
               onChange={(e) => setSearchData({ ...searchData, pickupDate: e.target.value })}
-              className="input-elegant input-with-icon"
+              className="w-full pl-12 pr-4 py-4 bg-neutral-800/50 border border-neutral-700/50 rounded-2xl focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all duration-300 text-white backdrop-blur-sm"
               min={new Date().toISOString().split('T')[0]}
             />
           </div>
@@ -69,7 +69,7 @@ const SearchBar = () => {
 
         {/* Return Date */}
         <div>
-          <label className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
+          <label className="block text-sm font-semibold text-neutral-300 mb-3">
             Return Date
           </label>
           <div className="relative">
@@ -78,7 +78,7 @@ const SearchBar = () => {
               type="date"
               value={searchData.returnDate}
               onChange={(e) => setSearchData({ ...searchData, returnDate: e.target.value })}
-              className="input-elegant input-with-icon"
+              className="w-full pl-12 pr-4 py-4 bg-neutral-800/50 border border-neutral-700/50 rounded-2xl focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all duration-300 text-white backdrop-blur-sm"
               min={searchData.pickupDate || new Date().toISOString().split('T')[0]}
             />
           </div>
@@ -86,7 +86,7 @@ const SearchBar = () => {
 
         {/* Vehicle Type */}
         <div>
-          <label className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
+          <label className="block text-sm font-semibold text-neutral-300 mb-3">
             Vehicle Type
           </label>
           <div className="relative">
@@ -94,10 +94,10 @@ const SearchBar = () => {
             <select
               value={searchData.vehicleType}
               onChange={(e) => setSearchData({ ...searchData, vehicleType: e.target.value })}
-              className="input-elegant input-with-icon appearance-none cursor-pointer"
+              className="w-full pl-12 pr-4 py-4 bg-neutral-800/50 border border-neutral-700/50 rounded-2xl focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all duration-300 text-white backdrop-blur-sm appearance-none cursor-pointer"
             >
               {vehicleTypes.map((type) => (
-                <option key={type.value} value={type.value}>
+                <option key={type.value} value={type.value} className="bg-neutral-800 text-white">
                   {type.icon} {type.label}
                 </option>
               ))}
@@ -105,13 +105,13 @@ const SearchBar = () => {
           </div>
         </div>
 
-        {/* Search Button - Full height on mobile, aligned on desktop */}
+        {/* Search Button */}
         <div className="lg:flex lg:items-end">
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full bg-primary-900 dark:bg-primary-800 hover:bg-primary-800 dark:hover:bg-primary-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-elegant-md hover:shadow-elegant-lg flex items-center justify-center h-14 text-lg"
+            className="w-full bg-white hover:bg-neutral-100 text-black font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center h-14"
           >
             <Search className="w-5 h-5 mr-3" />
             Search Vehicles
@@ -120,9 +120,9 @@ const SearchBar = () => {
       </form>
 
       {/* Quick Filters */}
-      <div className="mt-8 pt-6 border-t border-neutral-200 dark:border-neutral-700">
-        <div className="flex flex-wrap items-center gap-4">
-          <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400 flex items-center">
+      <div className="mt-8 pt-6 border-t border-neutral-800/50">
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="text-sm font-medium text-neutral-400 flex items-center">
             <Filter className="w-4 h-4 mr-2" />
             Quick Filters:
           </span>
@@ -145,7 +145,7 @@ const SearchBar = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={filter.action}
-              className="px-4 py-2 text-sm bg-neutral-100 dark:bg-neutral-800 hover:bg-primary-100 dark:hover:bg-primary-900/20 hover:text-primary-700 dark:hover:text-primary-300 rounded-lg transition-all duration-300 font-medium tracking-wide text-xs uppercase"
+              className="px-4 py-2 text-sm bg-neutral-800/50 hover:bg-neutral-700/50 text-neutral-300 hover:text-white rounded-xl transition-all duration-300 font-medium backdrop-blur-sm border border-neutral-700/30"
             >
               {filter.label}
             </motion.button>
