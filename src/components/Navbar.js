@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Menu, X, User, LogOut, ChevronDown } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import { Menu, X, User, LogOut, ChevronDown } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import logoImage from '../logo/final.jpg';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
-  const { isDark, toggleTheme } = useTheme();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -37,9 +36,9 @@ const Navbar = () => {
           <Link to="/" className="flex items-center space-x-4 group">
             <div className="relative">
               <img 
-                src="/final.jpg" 
+                src={logoImage} 
                 alt="LivinLease" 
-                className="w-10 h-10 rounded-xl object-cover shadow-elegant group-hover:shadow-elegant-md transition-all duration-300"
+                className="w-12 h-12 rounded-xl object-cover shadow-elegant group-hover:shadow-elegant-md transition-all duration-300"
               />
             </div>
             <div className="flex flex-col">
@@ -63,38 +62,6 @@ const Navbar = () => {
 
           {/* Right Side */}
           <div className="hidden lg:flex items-center space-x-6">
-            {/* Theme Toggle */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleTheme}
-              className="p-3 rounded-xl bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-300"
-            >
-              <AnimatePresence mode="wait">
-                {isDark ? (
-                  <motion.div
-                    key="sun"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Sun size={18} />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="moon"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Moon size={18} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
-
             {/* User Menu */}
             {user ? (
               <div className="relative">
@@ -232,16 +199,7 @@ const Navbar = () => {
                 ))}
               </div>
               
-              <div className="flex items-center justify-between pt-6 border-t border-neutral-200 dark:border-neutral-800">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={toggleTheme}
-                  className="p-3 rounded-xl bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-300"
-                >
-                  {isDark ? <Sun size={18} /> : <Moon size={18} />}
-                </motion.button>
-                
+              <div className="flex items-center justify-end pt-6 border-t border-neutral-200 dark:border-neutral-800">
                 {user ? (
                   <div className="flex items-center space-x-3">
                     <Link 

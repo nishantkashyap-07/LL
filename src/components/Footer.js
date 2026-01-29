@@ -4,6 +4,7 @@ import {
   MapPin, Phone, Mail, Clock, Facebook, Twitter, Instagram, 
   Linkedin, Youtube, ArrowRight, Shield, Award, Users, Star 
 } from 'lucide-react';
+import logoImage from '../logo/final.jpg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -138,9 +139,9 @@ const Footer = () => {
                 {/* Logo */}
                 <div className="flex items-center space-x-3 mb-6">
                   <img 
-                    src="/final.jpg" 
+                    src={logoImage} 
                     alt="LivinLease Logo" 
-                    className="w-12 h-12 rounded-xl object-cover"
+                    className="w-14 h-14 rounded-xl object-cover shadow-elegant"
                   />
                   <div>
                     <span className="text-2xl font-display font-bold text-gradient">LivinLease</span>
