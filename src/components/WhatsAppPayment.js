@@ -89,14 +89,14 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
           </h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors"
+            className="p-2 hover:bg-neutral-800 rounded-lg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Booking Summary */}
-        <div className="bg-neutral-50 dark:bg-neutral-800/50 rounded-xl p-4 mb-6">
+        <div className="bg-neutral-800/50 rounded-xl p-4 mb-6">
           <h3 className="font-semibold mb-3">Booking Summary</h3>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
@@ -104,14 +104,24 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
               <span className="font-medium">{booking.vehicleName}</span>
             </div>
             <div className="flex justify-between">
+              <span>Rental Type:</span>
+              <span className="font-medium capitalize">{booking.rentalType || 'daily'}</span>
+            </div>
+            <div className="flex justify-between">
               <span>Duration:</span>
-              <span className="font-medium">{booking.days} days</span>
+              <span className="font-medium">{booking.duration} {booking.rentalType === 'hourly' ? 'hours' : 'days'}</span>
             </div>
             <div className="flex justify-between">
               <span>Dates:</span>
               <span className="font-medium">{booking.dates}</span>
             </div>
-            <div className="flex justify-between border-t border-neutral-200 dark:border-neutral-600 pt-2">
+            {booking.rentalType === 'hourly' && (
+              <div className="flex justify-between">
+                <span>Times:</span>
+                <span className="font-medium">{booking.pickupTime} - {booking.returnTime}</span>
+              </div>
+            )}
+            <div className="flex justify-between border-t border-neutral-600 pt-2">
               <span className="font-semibold">Total Amount:</span>
               <span className="font-bold text-primary-500">{formatCurrency(booking.totalAmount)}</span>
             </div>
@@ -124,7 +134,7 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
           <div className={`${paymentStep >= 1 ? 'opacity-100' : 'opacity-50'}`}>
             <div className="flex items-center mb-3">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mr-3 ${
-                paymentStep >= 1 ? 'bg-primary-500 text-white' : 'bg-neutral-200 dark:bg-neutral-700'
+                paymentStep >= 1 ? 'bg-primary-500 text-white' : 'bg-neutral-700'
               }`}>
                 1
               </div>
@@ -132,7 +142,7 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
             </div>
             
             <div className="ml-11 space-y-3">
-              <p className="text-sm text-neutral-600 dark:text-neutral-300">
+              <p className="text-sm text-neutral-300">
                 Click below to open WhatsApp and send your booking details to our payment team.
               </p>
               
@@ -144,7 +154,7 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
                 Open WhatsApp
               </button>
 
-              <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-3">
+              <div className="bg-green-900/20 border border-green-800 rounded-lg p-3">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-sm font-medium">Booking ID:</span>
                   <button
@@ -155,7 +165,7 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
                     Copy
                   </button>
                 </div>
-                <code className="text-sm bg-white dark:bg-gray-800 px-2 py-1 rounded">
+                <code className="text-sm bg-neutral-800 px-2 py-1 rounded">
                   {bookingId}
                 </code>
               </div>
@@ -166,7 +176,7 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
           <div className={`${paymentStep >= 2 ? 'opacity-100' : 'opacity-50'}`}>
             <div className="flex items-center mb-3">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mr-3 ${
-                paymentStep >= 2 ? 'bg-primary-500 text-white' : 'bg-gray-200 dark:bg-gray-700'
+                paymentStep >= 2 ? 'bg-primary-500 text-white' : 'bg-neutral-700'
               }`}>
                 2
               </div>
@@ -175,12 +185,12 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
             
             {paymentStep >= 2 && (
               <div className="ml-11 space-y-3">
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-neutral-300">
                   Pay {formatCurrency(booking.totalAmount)} using any of these methods:
                 </p>
                 
                 <div className="space-y-3">
-                  <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3">
+                  <div className="bg-blue-900/20 border border-blue-800 rounded-lg p-3">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm font-medium">UPI ID:</span>
                       <button
@@ -191,12 +201,12 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
                         Copy
                       </button>
                     </div>
-                    <code className="text-sm bg-white dark:bg-gray-800 px-2 py-1 rounded">
+                    <code className="text-sm bg-neutral-800 px-2 py-1 rounded">
                       {WHATSAPP_CONFIG.upiId}
                     </code>
                   </div>
 
-                  <div className="text-sm text-gray-600 dark:text-gray-300">
+                  <div className="text-sm text-neutral-300">
                     <strong>Other payment methods:</strong>
                     <ul className="list-disc list-inside mt-1 space-y-1">
                       <li>Google Pay / PhonePe / Paytm</li>
@@ -213,7 +223,7 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
           <div className={`${paymentStep >= 2 ? 'opacity-100' : 'opacity-50'}`}>
             <div className="flex items-center mb-3">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mr-3 ${
-                paymentStep >= 3 ? 'bg-primary-500 text-white' : 'bg-gray-200 dark:bg-gray-700'
+                paymentStep >= 3 ? 'bg-primary-500 text-white' : 'bg-neutral-700'
               }`}>
                 3
               </div>
@@ -222,14 +232,14 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
             
             {paymentStep >= 2 && (
               <div className="ml-11 space-y-3">
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-neutral-300">
                   Upload a screenshot of your payment for faster verification.
                 </p>
                 
                 {!paymentProof ? (
-                  <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-6 text-center">
+                  <div className="border-2 border-dashed border-neutral-600 rounded-lg p-6 text-center">
                     <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                    <p className="text-sm text-neutral-400 mb-3">
                       Drag and drop or click to upload
                     </p>
                     <input
@@ -242,13 +252,13 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
                     />
                     <label
                       htmlFor="payment-proof"
-                      className={`bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 font-medium px-6 py-3 rounded-lg transition-all duration-300 border border-neutral-200 dark:border-neutral-700 tracking-wide text-xs uppercase cursor-pointer ${uploading ? 'opacity-50' : ''}`}
+                      className={`bg-neutral-800 hover:bg-neutral-700 text-neutral-100 font-medium px-6 py-3 rounded-lg transition-all duration-300 border border-neutral-700 tracking-wide text-xs uppercase cursor-pointer ${uploading ? 'opacity-50' : ''}`}
                     >
                       {uploading ? 'Uploading...' : 'Choose File'}
                     </label>
                   </div>
                 ) : (
-                  <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-3 flex items-center">
+                  <div className="bg-green-900/20 border border-green-800 rounded-lg p-3 flex items-center">
                     <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
                     <span className="text-sm">Payment proof uploaded: {paymentProof.name}</span>
                   </div>
@@ -262,22 +272,22 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
         <div className="flex space-x-3 mt-8">
           <button
             onClick={onClose}
-            className="flex-1 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 font-medium px-8 py-4 rounded-xl transition-all duration-300 border border-neutral-200 dark:border-neutral-700 tracking-wide text-xs uppercase"
+            className="flex-1 bg-neutral-800 hover:bg-neutral-700 text-neutral-100 font-medium px-8 py-4 rounded-xl transition-all duration-300 border border-neutral-700 tracking-wide text-xs uppercase"
           >
             Cancel
           </button>
           <button
             onClick={handlePaymentComplete}
             disabled={paymentStep < 2}
-            className={`flex-1 bg-primary-900 dark:bg-primary-800 hover:bg-primary-800 dark:hover:bg-primary-700 text-white font-medium px-8 py-4 rounded-xl transition-all duration-300 shadow-elegant-md hover:shadow-elegant-lg tracking-wide text-xs uppercase ${paymentStep < 2 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`flex-1 bg-primary-600 hover:bg-primary-700 text-white font-medium px-8 py-4 rounded-xl transition-all duration-300 shadow-elegant-md hover:shadow-elegant-lg tracking-wide text-xs uppercase ${paymentStep < 2 ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             Complete Booking
           </button>
         </div>
 
         {/* Help Text */}
-        <div className="mt-4 p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
-          <p className="text-sm text-yellow-800 dark:text-yellow-200">
+        <div className="mt-4 p-3 bg-yellow-900/20 border border-yellow-800 rounded-lg">
+          <p className="text-sm text-yellow-200">
             <strong>Need help?</strong> Contact us on WhatsApp at {WHATSAPP_CONFIG.supportNumber} or call our support team.
           </p>
         </div>

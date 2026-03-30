@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
 import Modal from './Modal';
 
@@ -31,8 +31,8 @@ const ImageGallery = ({ images, alt = 'Gallery image' }) => {
 
   if (!images || images.length === 0) {
     return (
-      <div className="w-full h-80 bg-neutral-200 dark:bg-neutral-700 rounded-xl flex items-center justify-center">
-        <span className="text-neutral-500 dark:text-neutral-400">No images available</span>
+      <div className="w-full h-80 bg-neutral-800 rounded-xl flex items-center justify-center">
+        <span className="text-neutral-500">No images available</span>
       </div>
     );
   }
@@ -65,15 +65,15 @@ const ImageGallery = ({ images, alt = 'Gallery image' }) => {
             <>
               <button
                 onClick={prevImage}
-                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/90 dark:bg-neutral-800/90 hover:bg-white dark:hover:bg-neutral-800 rounded-full shadow-elegant transition-all opacity-0 group-hover:opacity-100"
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-neutral-900/90 hover:bg-neutral-800 rounded-full shadow-elegant transition-all opacity-0 group-hover:opacity-100"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-5 h-5 text-neutral-200" />
               </button>
               <button
                 onClick={nextImage}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/90 dark:bg-neutral-800/90 hover:bg-white dark:hover:bg-neutral-800 rounded-full shadow-elegant transition-all opacity-0 group-hover:opacity-100"
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-neutral-900/90 hover:bg-neutral-800 rounded-full shadow-elegant transition-all opacity-0 group-hover:opacity-100"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-5 h-5 text-neutral-200" />
               </button>
             </>
           )}
@@ -97,8 +97,8 @@ const ImageGallery = ({ images, alt = 'Gallery image' }) => {
                 onClick={() => setSelectedImage(index)}
                 className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${
                   selectedImage === index
-                    ? 'border-primary-500 ring-2 ring-primary-200 dark:ring-primary-800'
-                    : 'border-transparent hover:border-neutral-300 dark:hover:border-neutral-600'
+                    ? 'border-neutral-400 ring-2 ring-neutral-600'
+                    : 'border-transparent hover:border-neutral-600'
                 }`}
               >
                 <img

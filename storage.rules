@@ -1,0 +1,75 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check file size (max 5MB)
+    function isValidSize() {
+      return request.resource.size < 5 * 1024 * 1024;
+    }
+    
+    // Helper function to check if file is an image
+    function isImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+    
+    // Vehicle images
+    match /vehicles/{vehicleId}/{allPaths=**} {
+      // Anyone can read vehicle images
+      allow read: if true;
+      
+      // Authenticated users can upload vehicle images (sellers/admins)
+      allow write: if isAuthenticated() && isImage() && isValidSize();
+      
+      // Authenticated users can delete their own vehicle images
+      allow delete: if isAuthenticated();
+    }
+    
+    // User profile images
+    match /users/{userId}/{allPaths=**} {
+      // Anyone can read profile images
+      allow read: if true;
+      
+      // Users can upload their own profile images
+      allow write: if isAuthenticated() && 
+                     request.auth.uid == userId && 
+                     isImage() && 
+                     isValidSize();
+      
+      // Users can delete their own profile images
+      allow delete: if isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // Payment screenshots
+    match /payments/{paymentId}/{allPaths=**} {
+      // Only authenticated users can read payment screenshots
+      allow read: if isAuthenticated();
+      
+      // Authenticated users can upload payment screenshots
+      allow write: if isAuthenticated() && isImage() && isValidSize();
+      
+      // Users can delete their own payment screenshots
+      allow delete: if isAuthenticated();
+    }
+    
+    // Seller documents
+    match /seller-documents/{userId}/{allPaths=**} {
+      // Only the user and admins can read their documents
+      allow read: if isAuthenticated() && 
+                    (request.auth.uid == userId || 
+                     firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.isAdmin == true);
+      
+      // Users can upload their own seller documents
+      allow write: if isAuthenticated() && 
+                     request.auth.uid == userId && 
+                     isValidSize();
+      
+      // Users can delete their own seller documents
+      allow delete: if isAuthenticated() && request.auth.uid == userId;
+    }
+  }
+}

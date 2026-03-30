@@ -1,0 +1,36 @@
+Copy these values EXACTLY (no extra spaces or line breaks) into Vercel Dashboard:
+https://vercel.com/nishant-kashyaps-projects-1f95baa6/ll-4tkv/settings/environment-variables
+
+For each variable, click "Add New" and paste the value exactly as shown:
+
+1. REACT_APP_FIREBASE_API_KEY
+   Value: AIzaSyAvjoMzgjEImLDtKA-LMR8iYRklC3MhuvA
+
+2. REACT_APP_FIREBASE_AUTH_DOMAIN
+   Value: livinlease.firebaseapp.com
+
+3. REACT_APP_FIREBASE_PROJECT_ID
+   Value: livinlease
+
+4. REACT_APP_FIREBASE_STORAGE_BUCKET
+   Value: livinlease.firebasestorage.app
+
+5. REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+   Value: 610905276136
+
+6. REACT_APP_FIREBASE_APP_ID
+   Value: 1:610905276136:web:9d3279c4a553071f6ed35d
+
+7. REACT_APP_FIREBASE_MEASUREMENT_ID
+   Value: G-850XYBXTRY
+
+8. REACT_APP_ENVIRONMENT
+   Value: production
+
+IMPORTANT: 
+- Select "Production" environment for each
+- After adding all variables, click "Redeploy" button
+- Also add Vercel domains to Firebase: https://console.firebase.google.com/project/livinlease/authentication/settings
+  Add these domains:
+  - ll-4tkv.vercel.app
+  - ll-4tkv-l6t7wks04-nishant-kashyaps-projects-1f95baa6.vercel.app
