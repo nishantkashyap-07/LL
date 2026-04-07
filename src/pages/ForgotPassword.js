@@ -40,7 +40,7 @@ const ForgotPassword = () => {
     }
   };
 
-  const inputClass = "w-full pl-12 pr-4 py-3 bg-neutral-800/50 border border-neutral-700/50 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-white placeholder:text-neutral-500";
+  const inputClass = "w-full pl-12 pr-4 py-3 bg-neutral-100 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700/50 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-white placeholder:text-neutral-500 dark:text-neutral-500";
 
   return (
     <div className="pt-20 min-h-screen flex items-center justify-center py-12">
@@ -57,7 +57,7 @@ const ForgotPassword = () => {
                       <Mail className="w-8 h-8 text-primary-400" />
                     </div>
                     <h1 className="text-3xl font-bold mb-2 text-white">Forgot Password?</h1>
-                    <p className="text-neutral-400">
+                    <p className="text-neutral-600 dark:text-neutral-400">
                       Enter your email and we'll send you a reset link
                     </p>
                   </div>
@@ -65,9 +65,9 @@ const ForgotPassword = () => {
                   <form onSubmit={handleSubmit}>
                     <Stack spacing="lg">
                       <div>
-                        <label className="block text-sm font-medium mb-2 text-neutral-300">Email Address</label>
+                        <label className="block text-sm font-medium mb-2 text-neutral-700 dark:text-neutral-300">Email Address</label>
                         <div className="relative">
-                          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 w-5 h-5" />
+                          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-600 dark:text-neutral-400 w-5 h-5" />
                           <input
                             type="email"
                             value={email}
@@ -111,9 +111,9 @@ const ForgotPassword = () => {
                       <CheckCircle className="w-8 h-8 text-success-400" />
                     </div>
                     <h1 className="text-3xl font-bold mb-2 text-white">Check Your Email</h1>
-                    <p className="text-neutral-400 mb-2">We've sent a password reset link to</p>
+                    <p className="text-neutral-600 dark:text-neutral-400 mb-2">We've sent a password reset link to</p>
                     <p className="text-lg font-medium text-white mb-6">{email}</p>
-                    <div className="bg-neutral-800/50 border border-neutral-700/50 rounded-xl p-4 text-sm text-neutral-400 text-left">
+                    <div className="bg-neutral-100 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700/50 rounded-xl p-4 text-sm text-neutral-600 dark:text-neutral-400 text-left">
                       <p className="font-medium text-white mb-2">Didn't receive the email?</p>
                       <ul className="list-disc list-inside space-y-1">
                         <li>Check your spam folder</li>
@@ -127,7 +127,7 @@ const ForgotPassword = () => {
                     <motion.button
                       whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                       onClick={() => { setSent(false); setEmail(''); }}
-                      className="w-full bg-neutral-800/50 hover:bg-neutral-800/70 text-white font-medium px-8 py-4 rounded-xl transition-all border border-neutral-700/50"
+                      className="w-full bg-neutral-100 dark:bg-neutral-800/50 hover:bg-neutral-100 dark:bg-neutral-800/70 text-white font-medium px-8 py-4 rounded-xl transition-all border border-neutral-200 dark:border-neutral-700/50"
                     >
                       Try Another Email
                     </motion.button>

@@ -89,14 +89,14 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
           </h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-neutral-800 rounded-lg transition-colors"
+            className="p-2 hover:bg-neutral-100 dark:bg-neutral-800 rounded-lg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Booking Summary */}
-        <div className="bg-neutral-800/50 rounded-xl p-4 mb-6">
+        <div className="bg-neutral-100 dark:bg-neutral-800/50 rounded-xl p-4 mb-6">
           <h3 className="font-semibold mb-3">Booking Summary</h3>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
@@ -121,7 +121,7 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
                 <span className="font-medium">{booking.pickupTime} - {booking.returnTime}</span>
               </div>
             )}
-            <div className="flex justify-between border-t border-neutral-600 pt-2">
+            <div className="flex justify-between border-t border-neutral-300 dark:border-neutral-600 pt-2">
               <span className="font-semibold">Total Amount:</span>
               <span className="font-bold text-primary-500">{formatCurrency(booking.totalAmount)}</span>
             </div>
@@ -142,7 +142,7 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
             </div>
             
             <div className="ml-11 space-y-3">
-              <p className="text-sm text-neutral-300">
+              <p className="text-sm text-neutral-700 dark:text-neutral-300">
                 Click below to open WhatsApp and send your booking details to our payment team.
               </p>
               
@@ -165,7 +165,7 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
                     Copy
                   </button>
                 </div>
-                <code className="text-sm bg-neutral-800 px-2 py-1 rounded">
+                <code className="text-sm bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded">
                   {bookingId}
                 </code>
               </div>
@@ -185,7 +185,7 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
             
             {paymentStep >= 2 && (
               <div className="ml-11 space-y-3">
-                <p className="text-sm text-neutral-300">
+                <p className="text-sm text-neutral-700 dark:text-neutral-300">
                   Pay {formatCurrency(booking.totalAmount)} using any of these methods:
                 </p>
                 
@@ -201,12 +201,12 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
                         Copy
                       </button>
                     </div>
-                    <code className="text-sm bg-neutral-800 px-2 py-1 rounded">
+                    <code className="text-sm bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded">
                       {WHATSAPP_CONFIG.upiId}
                     </code>
                   </div>
 
-                  <div className="text-sm text-neutral-300">
+                  <div className="text-sm text-neutral-700 dark:text-neutral-300">
                     <strong>Other payment methods:</strong>
                     <ul className="list-disc list-inside mt-1 space-y-1">
                       <li>Google Pay / PhonePe / Paytm</li>
@@ -232,14 +232,14 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
             
             {paymentStep >= 2 && (
               <div className="ml-11 space-y-3">
-                <p className="text-sm text-neutral-300">
+                <p className="text-sm text-neutral-700 dark:text-neutral-300">
                   Upload a screenshot of your payment for faster verification.
                 </p>
                 
                 {!paymentProof ? (
-                  <div className="border-2 border-dashed border-neutral-600 rounded-lg p-6 text-center">
+                  <div className="border-2 border-dashed border-neutral-300 dark:border-neutral-600 rounded-lg p-6 text-center">
                     <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                    <p className="text-sm text-neutral-400 mb-3">
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
                       Drag and drop or click to upload
                     </p>
                     <input
@@ -252,7 +252,7 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
                     />
                     <label
                       htmlFor="payment-proof"
-                      className={`bg-neutral-800 hover:bg-neutral-700 text-neutral-100 font-medium px-6 py-3 rounded-lg transition-all duration-300 border border-neutral-700 tracking-wide text-xs uppercase cursor-pointer ${uploading ? 'opacity-50' : ''}`}
+                      className={`bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 font-medium px-6 py-3 rounded-lg transition-all duration-300 border border-neutral-200 dark:border-neutral-700 tracking-wide text-xs uppercase cursor-pointer ${uploading ? 'opacity-50' : ''}`}
                     >
                       {uploading ? 'Uploading...' : 'Choose File'}
                     </label>
@@ -272,7 +272,7 @@ const WhatsAppPayment = ({ booking, onClose, onPaymentComplete }) => {
         <div className="flex space-x-3 mt-8">
           <button
             onClick={onClose}
-            className="flex-1 bg-neutral-800 hover:bg-neutral-700 text-neutral-100 font-medium px-8 py-4 rounded-xl transition-all duration-300 border border-neutral-700 tracking-wide text-xs uppercase"
+            className="flex-1 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 font-medium px-8 py-4 rounded-xl transition-all duration-300 border border-neutral-200 dark:border-neutral-700 tracking-wide text-xs uppercase"
           >
             Cancel
           </button>

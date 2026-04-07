@@ -43,7 +43,7 @@ const Cookies = () => {
               <Cookie className="w-8 h-8 text-accent-400" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Cookie Policy</h1>
-            <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
+            <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
               How we use cookies and similar technologies
             </p>
           </motion.div>
@@ -54,7 +54,7 @@ const Cookies = () => {
         <Stack spacing="xl">
           <Card variant="glass" padding="lg">
             <h2 className="text-2xl font-bold mb-4 text-white">What are cookies?</h2>
-            <p className="text-neutral-400 leading-relaxed">
+            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
               Cookies are small text files stored on your device when you visit our website.
               They help us provide you with a better experience by remembering your preferences
               and understanding how you use our services.
@@ -87,12 +87,12 @@ const Cookies = () => {
                             {type.canDisable ? 'Can be disabled' : 'Always active'}
                           </span>
                         </div>
-                        <p className="text-neutral-400 mb-4">{type.description}</p>
+                        <p className="text-neutral-600 dark:text-neutral-400 mb-4">{type.description}</p>
                         <div>
-                          <p className="text-sm font-medium text-neutral-300 mb-2">Examples:</p>
+                          <p className="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Examples:</p>
                           <ul className="space-y-1">
                             {type.examples.map((example, idx) => (
-                              <li key={idx} className="flex items-center space-x-2 text-sm text-neutral-400">
+                              <li key={idx} className="flex items-center space-x-2 text-sm text-neutral-600 dark:text-neutral-400">
                                 <div className="w-1.5 h-1.5 bg-primary-500 rounded-full flex-shrink-0" />
                                 <span>{example}</span>
                               </li>
@@ -109,12 +109,12 @@ const Cookies = () => {
 
           <Card variant="glass" padding="lg">
             <h2 className="text-2xl font-bold mb-4 text-white">Managing Cookies</h2>
-            <p className="text-neutral-400 leading-relaxed mb-4">
+            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
               You can control and manage cookies in your browser settings. However,
               disabling certain cookies may affect website functionality.
             </p>
-            <div className="bg-neutral-800/50 border border-neutral-700/50 rounded-xl p-4">
-              <p className="text-sm text-neutral-300">
+            <div className="bg-neutral-100 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700/50 rounded-xl p-4">
+              <p className="text-sm text-neutral-700 dark:text-neutral-300">
                 <span className="font-medium text-white">Note:</span> Essential cookies cannot be disabled as they are
                 necessary for the website to function properly.
               </p>
@@ -123,8 +123,8 @@ const Cookies = () => {
 
           <Card variant="glass" padding="lg" className="bg-primary-500/5 border-primary-500/20">
             <h3 className="text-xl font-semibold mb-4 text-white">Questions?</h3>
-            <p className="text-neutral-400 mb-4">If you have questions about our cookie policy:</p>
-            <div className="space-y-2 text-sm text-neutral-400">
+            <p className="text-neutral-600 dark:text-neutral-400 mb-4">If you have questions about our cookie policy:</p>
+            <div className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
               <p><span className="text-white font-medium">Email:</span> privacy@livinlease.com</p>
               <p><span className="text-white font-medium">Phone:</span> +91 98765 43210</p>
             </div>

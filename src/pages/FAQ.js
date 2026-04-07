@@ -60,18 +60,18 @@ const FAQ = () => {
   };
 
   return (
-    <div className="pt-20 min-h-screen bg-neutral-950">
+    <div className="pt-20 min-h-screen bg-neutral-50 dark:bg-neutral-950">
       <MetaTags title="FAQ" description="Frequently asked questions about LivinLease vehicle rentals." />
 
       {/* Hero */}
-      <div className="bg-neutral-900 border-b border-neutral-800">
+      <div className="bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800">
         <div className="container-elegant py-16 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div className="w-14 h-14 bg-neutral-800 rounded-2xl flex items-center justify-center mx-auto mb-5">
-              <HelpCircle className="w-7 h-7 text-neutral-300" />
+            <div className="w-14 h-14 bg-neutral-100 dark:bg-neutral-800 rounded-2xl flex items-center justify-center mx-auto mb-5">
+              <HelpCircle className="w-7 h-7 text-neutral-700 dark:text-neutral-300" />
             </div>
-            <h1 className="text-4xl font-bold text-neutral-100 mb-3">Frequently Asked Questions</h1>
-            <p className="text-neutral-400 max-w-xl mx-auto">Quick answers to common questions about our services</p>
+            <h1 className="text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">Frequently Asked Questions</h1>
+            <p className="text-neutral-600 dark:text-neutral-400 max-w-xl mx-auto">Quick answers to common questions about our services</p>
           </motion.div>
         </div>
       </div>
@@ -80,7 +80,7 @@ const FAQ = () => {
         {/* Search */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="max-w-xl mx-auto mb-12">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 dark:text-neutral-500" />
             <input
               type="text"
               placeholder="Search questions..."
@@ -96,7 +96,7 @@ const FAQ = () => {
           <div className="max-w-3xl mx-auto space-y-10">
             {filtered.map((cat, catIdx) => (
               <motion.div key={catIdx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: catIdx * 0.05 }}>
-                <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4">{cat.title}</h2>
+                <h2 className="text-sm font-semibold text-neutral-600 dark:text-neutral-400 uppercase tracking-wider mb-4">{cat.title}</h2>
                 <div className="space-y-2">
                   {cat.faqs.map((faq, faqIdx) => {
                     const key = `${catIdx}-${faqIdx}`;
@@ -105,10 +105,10 @@ const FAQ = () => {
                       <div key={faqIdx} className="card-minimal p-0 overflow-hidden">
                         <button
                           onClick={() => toggle(catIdx, faqIdx)}
-                          className="w-full text-left px-5 py-4 flex justify-between items-center hover:bg-neutral-800/50 transition-colors"
+                          className="w-full text-left px-5 py-4 flex justify-between items-center hover:bg-neutral-100 dark:bg-neutral-800/50 transition-colors"
                         >
-                          <span className="font-medium text-neutral-200 pr-4 text-sm">{faq.question}</span>
-                          <ChevronDown className={`w-4 h-4 text-neutral-500 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                          <span className="font-medium text-neutral-800 dark:text-neutral-200 pr-4 text-sm">{faq.question}</span>
+                          <ChevronDown className={`w-4 h-4 text-neutral-500 dark:text-neutral-500 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
                         </button>
                         <AnimatePresence>
                           {isOpen && (
@@ -119,7 +119,7 @@ const FAQ = () => {
                               transition={{ duration: 0.2 }}
                               className="overflow-hidden"
                             >
-                              <p className="px-5 pb-5 text-neutral-400 text-sm leading-relaxed border-t border-neutral-800 pt-3">{faq.answer}</p>
+                              <p className="px-5 pb-5 text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed border-t border-neutral-200 dark:border-neutral-800 pt-3">{faq.answer}</p>
                             </motion.div>
                           )}
                         </AnimatePresence>
@@ -132,25 +132,25 @@ const FAQ = () => {
           </div>
         ) : (
           <div className="text-center py-16">
-            <div className="w-12 h-12 bg-neutral-800 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <div className="w-12 h-12 bg-neutral-100 dark:bg-neutral-800 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <Search className="w-6 h-6 text-neutral-600" />
             </div>
-            <p className="text-neutral-400 text-sm">No results for "{searchQuery}"</p>
+            <p className="text-neutral-600 dark:text-neutral-400 text-sm">No results for "{searchQuery}"</p>
           </div>
         )}
 
         {/* Still have questions */}
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="max-w-3xl mx-auto mt-16">
           <div className="card-minimal text-center">
-            <h2 className="text-xl font-bold text-neutral-100 mb-2">Still have questions?</h2>
-            <p className="text-neutral-400 text-sm mb-6">Our support team is here to help.</p>
+            <h2 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-2">Still have questions?</h2>
+            <p className="text-neutral-600 dark:text-neutral-400 text-sm mb-6">Our support team is here to help.</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-neutral-100 hover:bg-white text-neutral-900 font-semibold rounded-xl text-sm transition-all">
                 <MessageCircle className="w-4 h-4" />WhatsApp Support
               </a>
               <a href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 font-medium rounded-xl text-sm transition-all border border-neutral-700">
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 font-medium rounded-xl text-sm transition-all border border-neutral-200 dark:border-neutral-700">
                 <Mail className="w-4 h-4" />Contact Us
               </a>
             </div>

@@ -19,8 +19,8 @@ const Section = ({
 
   const backgroundClasses = {
     transparent: '',
-    subtle: 'bg-neutral-900/50',
-    dark: 'bg-neutral-900',
+    subtle: 'bg-white dark:bg-neutral-900/50',
+    dark: 'bg-white dark:bg-neutral-900',
     gradient: 'bg-sophisticated-gradient'
   };
 

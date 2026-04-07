@@ -102,39 +102,48 @@ const BrowseVehicles = () => {
 
   const SkeletonCard = () => (
     <div className="card-minimal animate-pulse">
-      <div className="bg-neutral-800 h-52 rounded-xl mb-4"></div>
+      <div className="bg-neutral-100 dark:bg-neutral-800 h-52 rounded-xl mb-4"></div>
       <div className="space-y-3">
-        <div className="bg-neutral-800 h-5 w-3/4 rounded"></div>
-        <div className="bg-neutral-800 h-4 w-1/2 rounded"></div>
-        <div className="bg-neutral-800 h-10 w-full rounded-xl mt-4"></div>
+        <div className="bg-neutral-100 dark:bg-neutral-800 h-5 w-3/4 rounded"></div>
+        <div className="bg-neutral-100 dark:bg-neutral-800 h-4 w-1/2 rounded"></div>
+        <div className="bg-neutral-100 dark:bg-neutral-800 h-10 w-full rounded-xl mt-4"></div>
       </div>
     </div>
   );
 
   return (
-    <div className="pt-20 min-h-screen bg-neutral-950">
+    <div className="pt-20 min-h-screen bg-neutral-50 dark:bg-neutral-950">
       <div className="container-elegant py-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ type: 'spring', stiffness: 280, damping: 24 }}
+          >
             <h1 className="text-3xl font-bold mb-1">
               Browse <span className="text-gradient">Vehicles</span>
             </h1>
-            <p className="text-neutral-500 text-sm">
+            <p className="text-neutral-500 dark:text-neutral-500 text-sm">
               {loading ? 'Loading vehicles...' : `${filteredVehicles.length} vehicles available`}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center gap-3">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ type: 'spring', stiffness: 280, damping: 24, delay: 0.1 }}
+            className="flex flex-wrap lg:flex-nowrap items-center gap-3 w-full md:w-auto"
+          >
             {/* Search */}
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" />
+            <div className="relative flex-1 md:flex-none">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 dark:text-neutral-500" />
               <input
                 type="text"
-                placeholder="Search vehicles..."
+                placeholder="Search..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="pl-9 pr-4 py-2.5 bg-neutral-900 border border-neutral-800 rounded-xl text-sm text-neutral-200 placeholder:text-neutral-500 focus:outline-none focus:border-neutral-600 w-48"
+                className="pl-9 pr-4 py-2.5 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl text-sm text-neutral-800 dark:text-neutral-200 placeholder:text-neutral-500 dark:text-neutral-500 focus:outline-none focus:border-neutral-300 dark:border-neutral-600 w-full lg:w-48"
               />
             </div>
 
@@ -142,17 +151,17 @@ const BrowseVehicles = () => {
             <select
               value={sortBy}
               onChange={e => setSortBy(e.target.value)}
-              className="px-3 py-2.5 bg-neutral-900 border border-neutral-800 rounded-xl text-sm text-neutral-300 focus:outline-none focus:border-neutral-600"
+              className="px-3 py-2.5 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl text-sm text-neutral-700 dark:text-neutral-300 focus:outline-none focus:border-neutral-300 dark:border-neutral-600"
             >
               {sortOptions.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
             </select>
 
             {/* View Toggle */}
-            <div className="flex items-center bg-neutral-900 border border-neutral-800 rounded-xl p-1">
-              <button onClick={() => setViewMode('grid')} className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-neutral-700 text-white' : 'text-neutral-500 hover:text-neutral-300'}`}>
+            <div className="flex items-center bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-1">
+              <button onClick={() => setViewMode('grid')} className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-neutral-700 text-white' : 'text-neutral-500 dark:text-neutral-500 hover:text-neutral-700 dark:text-neutral-300'}`}>
                 <Grid size={16} />
               </button>
-              <button onClick={() => setViewMode('list')} className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-neutral-700 text-white' : 'text-neutral-500 hover:text-neutral-300'}`}>
+              <button onClick={() => setViewMode('list')} className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-neutral-700 text-white' : 'text-neutral-500 dark:text-neutral-500 hover:text-neutral-700 dark:text-neutral-300'}`}>
                 <List size={16} />
               </button>
             </div>
@@ -160,29 +169,29 @@ const BrowseVehicles = () => {
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all border ${showFilters ? 'bg-neutral-700 border-neutral-600 text-white' : 'bg-neutral-900 border-neutral-800 text-neutral-300 hover:border-neutral-700'}`}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all border ${showFilters ? 'bg-neutral-700 border-neutral-300 dark:border-neutral-600 text-white' : 'bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-neutral-200 dark:border-neutral-700'}`}
             >
               <SlidersHorizontal size={16} />
               Filters
             </button>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="flex gap-8">
+        <div className="flex flex-col lg:flex-row gap-8">
           {/* Filters Sidebar */}
-          <AnimatePresence>
+          <AnimatePresence mode="wait">
             {showFilters && (
               <motion.div
-                initial={{ opacity: 0, width: 0 }}
-                animate={{ opacity: 1, width: 280 }}
-                exit={{ opacity: 0, width: 0 }}
-                transition={{ duration: 0.25 }}
-                className="flex-shrink-0 overflow-hidden"
+                initial={{ opacity: 0, x: -20, height: 0 }}
+                animate={{ opacity: 1, x: 0, height: 'auto' }}
+                exit={{ opacity: 0, x: -20, height: 0 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+                className="flex-shrink-0 overflow-hidden w-full lg:w-auto"
               >
-                <div className="card-minimal sticky top-24 w-[280px]">
+                <div className="card-minimal lg:sticky lg:top-24 w-full lg:w-[280px]">
                   <div className="flex justify-between items-center mb-6">
-                    <h3 className="font-semibold text-neutral-100">Filters</h3>
-                    <button onClick={() => setShowFilters(false)} className="p-1.5 hover:bg-neutral-800 rounded-lg transition-colors text-neutral-400">
+                    <h3 className="font-semibold text-neutral-900 dark:text-neutral-100">Filters</h3>
+                    <button onClick={() => setShowFilters(false)} className="p-1.5 hover:bg-neutral-100 dark:bg-neutral-800 rounded-lg transition-colors text-neutral-600 dark:text-neutral-400">
                       <X size={16} />
                     </button>
                   </div>
@@ -190,13 +199,13 @@ const BrowseVehicles = () => {
                   <div className="space-y-6">
                     {/* Vehicle Type */}
                     <div>
-                      <label className="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">Vehicle Type</label>
+                      <label className="block text-xs font-semibold text-neutral-600 dark:text-neutral-400 uppercase tracking-wider mb-3">Vehicle Type</label>
                       <div className="space-y-1">
                         {vehicleTypes.map(type => (
                           <button
                             key={type.value}
                             onClick={() => setFilters({ ...filters, type: type.value })}
-                            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${filters.type === type.value ? 'bg-neutral-700 text-white' : 'text-neutral-400 hover:bg-neutral-800 hover:text-neutral-200'}`}
+                            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${filters.type === type.value ? 'bg-neutral-700 text-white' : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:bg-neutral-800 hover:text-neutral-800 dark:text-neutral-200'}`}
                           >
                             {type.icon}
                             {type.label}
@@ -207,8 +216,8 @@ const BrowseVehicles = () => {
 
                     {/* Price Range */}
                     <div>
-                      <label className="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
-                        Max Price: <span className="text-neutral-200">₹{filters.priceRange[1]}/day</span>
+                      <label className="block text-xs font-semibold text-neutral-600 dark:text-neutral-400 uppercase tracking-wider mb-3">
+                        Max Price: <span className="text-neutral-800 dark:text-neutral-200">₹{filters.priceRange[1]}/day</span>
                       </label>
                       <input
                         type="range" min="0" max="5000" step="100"
@@ -216,18 +225,18 @@ const BrowseVehicles = () => {
                         onChange={e => setFilters({ ...filters, priceRange: [0, parseInt(e.target.value)] })}
                         className="w-full accent-neutral-400"
                       />
-                      <div className="flex justify-between text-xs text-neutral-500 mt-1">
+                      <div className="flex justify-between text-xs text-neutral-500 dark:text-neutral-500 mt-1">
                         <span>₹0</span><span>₹5000</span>
                       </div>
                     </div>
 
                     {/* Brand */}
                     <div>
-                      <label className="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">Brand</label>
+                      <label className="block text-xs font-semibold text-neutral-600 dark:text-neutral-400 uppercase tracking-wider mb-3">Brand</label>
                       <select
                         value={filters.brand}
                         onChange={e => setFilters({ ...filters, brand: e.target.value })}
-                        className="w-full px-3 py-2.5 bg-neutral-800 border border-neutral-700 rounded-lg text-sm text-neutral-200 focus:outline-none"
+                        className="w-full px-3 py-2.5 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg text-sm text-neutral-800 dark:text-neutral-200 focus:outline-none"
                       >
                         {brands.map(b => <option key={b} value={b}>{b === 'all' ? 'All Brands' : b}</option>)}
                       </select>
@@ -235,13 +244,13 @@ const BrowseVehicles = () => {
 
                     {/* Rating */}
                     <div>
-                      <label className="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">Min Rating</label>
+                      <label className="block text-xs font-semibold text-neutral-600 dark:text-neutral-400 uppercase tracking-wider mb-3">Min Rating</label>
                       <div className="space-y-1">
                         {[{ v: 0, l: 'Any Rating' }, { v: 3, l: '3+ Stars' }, { v: 4, l: '4+ Stars' }, { v: 4.5, l: '4.5+ Stars' }].map(r => (
                           <button
                             key={r.v}
                             onClick={() => setFilters({ ...filters, rating: r.v })}
-                            className={`w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors ${filters.rating === r.v ? 'bg-neutral-700 text-white' : 'text-neutral-400 hover:bg-neutral-800 hover:text-neutral-200'}`}
+                            className={`w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors ${filters.rating === r.v ? 'bg-neutral-700 text-white' : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:bg-neutral-800 hover:text-neutral-800 dark:text-neutral-200'}`}
                           >
                             {r.l}
                           </button>
@@ -249,7 +258,7 @@ const BrowseVehicles = () => {
                       </div>
                     </div>
 
-                    <button onClick={clearFilters} className="w-full py-2.5 text-sm text-neutral-400 hover:text-neutral-200 border border-neutral-700 hover:border-neutral-600 rounded-lg transition-colors">
+                    <button onClick={clearFilters} className="w-full py-2.5 text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:border-neutral-600 rounded-lg transition-colors">
                       Clear All Filters
                     </button>
                   </div>
@@ -266,18 +275,28 @@ const BrowseVehicles = () => {
               </div>
             ) : paginatedVehicles.length > 0 ? (
               <>
-                <motion.div layout className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1'} gap-6`}>
-                  {paginatedVehicles.map((vehicle, index) => (
-                    <motion.div
-                      key={vehicle.id}
-                      layout
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <VehicleCard vehicle={vehicle} />
-                    </motion.div>
-                  ))}
+                <motion.div
+                  layout
+                  className={`grid ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1'} gap-6`}
+                >
+                  <AnimatePresence mode="popLayout">
+                    {paginatedVehicles.map((vehicle, index) => (
+                      <motion.div
+                        key={vehicle.id}
+                        layout
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{
+                          duration: 0.4,
+                          delay: index * 0.08,
+                          ease: [0.25, 0.46, 0.45, 0.94]
+                        }}
+                      >
+                        <VehicleCard vehicle={vehicle} />
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
                 </motion.div>
                 {totalPages > 1 && (
                   <div className="mt-12">
@@ -286,16 +305,25 @@ const BrowseVehicles = () => {
                 )}
               </>
             ) : (
-              <div className="flex flex-col items-center justify-center py-24 text-center">
-                <div className="w-20 h-20 bg-neutral-800 rounded-2xl flex items-center justify-center mb-6">
-                  <Car className="w-10 h-10 text-neutral-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-neutral-200 mb-2">No vehicles found</h3>
-                <p className="text-neutral-500 mb-6 max-w-sm">Try adjusting your filters or search query to see more results.</p>
-                <button onClick={clearFilters} className="px-6 py-3 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 rounded-xl text-sm font-medium transition-colors border border-neutral-700">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+                className="flex flex-col items-center justify-center py-24 text-center"
+              >
+                <motion.div
+                  animate={{ rotate: [0, 5, -5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
+                  className="w-20 h-20 bg-neutral-100 dark:bg-neutral-800 rounded-2xl flex items-center justify-center mb-6"
+                >
+                  <Car className="w-10 h-10 text-neutral-500" />
+                </motion.div>
+                <h3 className="text-xl font-semibold text-neutral-800 dark:text-neutral-200 mb-2">No vehicles found</h3>
+                <p className="text-neutral-500 dark:text-neutral-500 mb-6 max-w-sm">Try adjusting your filters or search query to see more results.</p>
+                <button onClick={clearFilters} className="px-6 py-3 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 rounded-xl text-sm font-medium transition-colors border border-neutral-200 dark:border-neutral-700">
                   Clear Filters
                 </button>
-              </div>
+              </motion.div>
             )}
           </div>
         </div>

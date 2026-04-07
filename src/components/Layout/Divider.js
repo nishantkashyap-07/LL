@@ -18,22 +18,22 @@ const Divider = ({
 
   if (orientation === 'vertical') {
     return (
-      <div className={`w-px bg-neutral-800 ${spacingClasses[spacing]} ${className}`} />
+      <div className={`w-px bg-neutral-100 dark:bg-neutral-800 ${spacingClasses[spacing]} ${className}`} />
     );
   }
 
   if (label) {
     return (
       <div className={`flex items-center ${spacingClasses[spacing]} ${className}`}>
-        <div className="flex-1 border-t border-neutral-800"></div>
-        <span className="px-4 text-sm text-neutral-400">{label}</span>
-        <div className="flex-1 border-t border-neutral-800"></div>
+        <div className="flex-1 border-t border-neutral-200 dark:border-neutral-800"></div>
+        <span className="px-4 text-sm text-neutral-600 dark:text-neutral-400">{label}</span>
+        <div className="flex-1 border-t border-neutral-200 dark:border-neutral-800"></div>
       </div>
     );
   }
 
   return (
-    <hr className={`border-neutral-800 ${spacingClasses[spacing]} ${className}`} />
+    <hr className={`border-neutral-200 dark:border-neutral-800 ${spacingClasses[spacing]} ${className}`} />
   );
 };
 

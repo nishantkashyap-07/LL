@@ -67,7 +67,7 @@ const SplineScene = ({
       `}</style>
       <Suspense
         fallback={
-          <div className="w-full h-full flex items-center justify-center bg-neutral-900/50">
+          <div className="w-full h-full flex items-center justify-center bg-white dark:bg-neutral-900/50">
             <motion.div
               animate={{
                 scale: [1, 1.2, 1],

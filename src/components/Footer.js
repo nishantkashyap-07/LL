@@ -36,18 +36,18 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-neutral-900 border-t border-neutral-800">
+    <footer className="bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
       {/* Newsletter strip */}
-      <div className="border-b border-neutral-800">
+      <div className="border-b border-neutral-200 dark:border-neutral-800">
         <div className="container-elegant py-12">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="max-w-md">
-              <h3 className="text-xl font-semibold text-neutral-100 mb-1">Stay in the loop</h3>
-              <p className="text-neutral-400 text-sm">Exclusive deals and new vehicle updates, straight to your inbox.</p>
+              <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-1">Stay in the loop</h3>
+              <p className="text-neutral-600 dark:text-neutral-400 text-sm">Exclusive deals and new vehicle updates, straight to your inbox.</p>
             </div>
             <div className="flex gap-3 w-full lg:w-auto">
               <input type="email" placeholder="your@email.com"
-                className="flex-1 lg:w-64 px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-xl text-sm text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:border-neutral-500 transition-colors" />
+                className="flex-1 lg:w-64 px-4 py-3 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl text-sm text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-500 dark:text-neutral-500 focus:outline-none focus:border-neutral-500 transition-colors" />
               <button className="inline-flex items-center gap-2 px-5 py-3 bg-neutral-100 hover:bg-white text-neutral-900 font-semibold rounded-xl text-sm transition-all duration-200 hover:-translate-y-px flex-shrink-0">
                 Subscribe <ArrowRight className="w-4 h-4" />
               </button>
@@ -65,16 +65,16 @@ const Footer = () => {
             <Link to="/" className="flex items-center gap-3 mb-5 group w-fit">
               <img src={logoImage} alt="LivinLease" className="w-11 h-11 rounded-xl object-cover shadow-elegant" />
               <div>
-                <div className="text-lg font-semibold text-neutral-100">LivinLease</div>
-                <div className="text-[10px] text-neutral-500 tracking-widest uppercase">Premium Rentals</div>
+                <div className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">LivinLease</div>
+                <div className="text-[10px] text-neutral-500 dark:text-neutral-500 tracking-widest uppercase">Premium Rentals</div>
               </div>
             </Link>
 
-            <p className="text-neutral-400 text-sm leading-relaxed mb-6 max-w-xs">
+            <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-6 max-w-xs">
               India's most trusted vehicle rental platform. Premium quality, transparent pricing, exceptional service.
             </p>
 
-            <div className="space-y-3 text-sm text-neutral-400">
+            <div className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
               <div className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-neutral-600 flex-shrink-0" />
                 <span>123 Business District, Mumbai, MH 400001</span>
@@ -97,11 +97,11 @@ const Footer = () => {
           {/* Links */}
           {footerLinks.map(section => (
             <div key={section.title}>
-              <h4 className="text-sm font-semibold text-neutral-200 uppercase tracking-wider mb-5">{section.title}</h4>
+              <h4 className="text-sm font-semibold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider mb-5">{section.title}</h4>
               <ul className="space-y-3">
                 {section.links.map(link => (
                   <li key={link.name}>
-                    <Link to={link.to} className="text-sm text-neutral-400 hover:text-neutral-100 transition-colors duration-200">
+                    <Link to={link.to} className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:text-neutral-100 transition-colors duration-200">
                       {link.name}
                     </Link>
                   </li>
@@ -112,15 +112,15 @@ const Footer = () => {
 
           {/* Trust */}
           <div>
-            <h4 className="text-sm font-semibold text-neutral-200 uppercase tracking-wider mb-5">Trust & Safety</h4>
+            <h4 className="text-sm font-semibold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider mb-5">Trust & Safety</h4>
             <div className="space-y-3">
               {[
                 { icon: Shield, text: 'SSL Secured Payments' },
                 { icon: Award, text: 'ISO Certified Service' },
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 bg-neutral-800/50 rounded-xl border border-neutral-700/50">
+                <div key={i} className="flex items-center gap-3 p-3 bg-neutral-100 dark:bg-neutral-800/50 rounded-xl border border-neutral-200 dark:border-neutral-700/50">
                   <item.icon className="w-4 h-4 text-accent-400 flex-shrink-0" />
-                  <span className="text-sm text-neutral-300">{item.text}</span>
+                  <span className="text-sm text-neutral-700 dark:text-neutral-300">{item.text}</span>
                 </div>
               ))}
             </div>
@@ -129,15 +129,15 @@ const Footer = () => {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-neutral-800">
+      <div className="border-t border-neutral-200 dark:border-neutral-800">
         <div className="container-elegant py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-neutral-500">© {year} LivinLease. All rights reserved. Made with ❤️ in India.</p>
+          <p className="text-sm text-neutral-500 dark:text-neutral-500">© {year} LivinLease. All rights reserved. Made with ❤️ in India.</p>
 
           <div className="flex items-center gap-4">
             {socials.map(s => (
               <motion.a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
                 whileHover={{ y: -2 }} whileTap={{ scale: 0.9 }}
-                className={`text-neutral-500 ${s.hover} transition-colors duration-200`} aria-label={s.label}>
+                className={`text-neutral-500 dark:text-neutral-500 ${s.hover} transition-colors duration-200`} aria-label={s.label}>
                 <s.icon className="w-5 h-5" />
               </motion.a>
             ))}

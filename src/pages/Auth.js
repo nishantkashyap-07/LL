@@ -78,7 +78,7 @@ const Auth = () => {
   };
 
   const inputClass = (field) =>
-    `w-full pl-12 pr-4 py-4 bg-neutral-900 border ${errors[field] ? 'border-red-500' : 'border-neutral-700'} rounded-xl focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all text-neutral-100 placeholder:text-neutral-500 text-sm`;
+    `w-full pl-12 pr-4 py-4 bg-white dark:bg-neutral-900 border ${errors[field] ? 'border-red-500' : 'border-neutral-200 dark:border-neutral-700'} rounded-xl focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-500 dark:text-neutral-500 text-sm`;
 
   const benefits = [
     { icon: Shield, text: '100% Secure Payments', color: 'text-emerald-400' },
@@ -87,12 +87,12 @@ const Auth = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-neutral-950 relative overflow-hidden">
+    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950 relative overflow-hidden">
       <MetaTags title={activeTab === 'login' ? 'Login' : 'Sign Up'} description="Login or create an account to book vehicles" />
 
       {/* Background blobs */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-neutral-800/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-neutral-800/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-neutral-100 dark:bg-neutral-800/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-neutral-100 dark:bg-neutral-800/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
       <div className="relative z-10 min-h-screen flex items-center justify-center py-20 px-4">
         <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -104,17 +104,17 @@ const Auth = () => {
             transition={{ duration: 0.7 }}
             className="hidden lg:block"
           >
-            <div className="inline-flex items-center gap-2 bg-neutral-800 border border-neutral-700 px-4 py-2 rounded-full mb-8">
-              <Sparkles className="w-4 h-4 text-neutral-300" />
-              <span className="text-sm text-neutral-300 font-medium">India's #1 Vehicle Rental Platform</span>
+            <div className="inline-flex items-center gap-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 px-4 py-2 rounded-full mb-8">
+              <Sparkles className="w-4 h-4 text-neutral-700 dark:text-neutral-300" />
+              <span className="text-sm text-neutral-700 dark:text-neutral-300 font-medium">India's #1 Vehicle Rental Platform</span>
             </div>
 
             <h1 className="text-5xl font-bold text-neutral-50 mb-6 leading-tight">
               Your Journey<br />
-              <span className="text-neutral-400">Starts Here</span>
+              <span className="text-neutral-600 dark:text-neutral-400">Starts Here</span>
             </h1>
 
-            <p className="text-neutral-400 text-lg leading-relaxed mb-10">
+            <p className="text-neutral-600 dark:text-neutral-400 text-lg leading-relaxed mb-10">
               Join thousands of happy customers who trust us for premium vehicle rentals across India.
             </p>
 
@@ -127,19 +127,19 @@ const Auth = () => {
                   transition={{ delay: 0.3 + i * 0.1 }}
                   className="flex items-center gap-4"
                 >
-                  <div className="w-10 h-10 bg-neutral-800 border border-neutral-700 rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl flex items-center justify-center">
                     <b.icon className={`w-5 h-5 ${b.color}`} />
                   </div>
-                  <span className="text-neutral-300 font-medium">{b.text}</span>
+                  <span className="text-neutral-700 dark:text-neutral-300 font-medium">{b.text}</span>
                 </motion.div>
               ))}
             </div>
 
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-neutral-800">
+            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-neutral-200 dark:border-neutral-800">
               {[{ n: '50K+', l: 'Users' }, { n: '500+', l: 'Vehicles' }, { n: '4.9★', l: 'Rating' }].map((s, i) => (
                 <div key={i}>
-                  <div className="text-2xl font-bold text-neutral-100 mb-1">{s.n}</div>
-                  <div className="text-sm text-neutral-500">{s.l}</div>
+                  <div className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-1">{s.n}</div>
+                  <div className="text-sm text-neutral-500 dark:text-neutral-500">{s.l}</div>
                 </div>
               ))}
             </div>
@@ -151,21 +151,21 @@ const Auth = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-8">
+            <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8">
               {/* Logo mark */}
-              <div className="w-12 h-12 bg-neutral-800 border border-neutral-700 rounded-xl flex items-center justify-center mx-auto mb-6">
-                <User className="w-6 h-6 text-neutral-300" />
+              <div className="w-12 h-12 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <User className="w-6 h-6 text-neutral-700 dark:text-neutral-300" />
               </div>
 
               <h2 className="text-2xl font-bold text-neutral-50 text-center mb-1">
                 {activeTab === 'login' ? 'Welcome back' : 'Create account'}
               </h2>
-              <p className="text-neutral-500 text-sm text-center mb-8">
+              <p className="text-neutral-500 dark:text-neutral-500 text-sm text-center mb-8">
                 {activeTab === 'login' ? 'Sign in to continue your journey' : 'Get started in seconds'}
               </p>
 
               {/* Tabs */}
-              <div className="flex bg-neutral-800 p-1 rounded-xl mb-8">
+              <div className="flex bg-neutral-100 dark:bg-neutral-800 p-1 rounded-xl mb-8">
                 {['login', 'signup'].map((tab) => (
                   <button
                     key={tab}
@@ -173,7 +173,7 @@ const Auth = () => {
                     className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-all capitalize ${
                       activeTab === tab
                         ? 'bg-neutral-100 text-neutral-900'
-                        : 'text-neutral-400 hover:text-neutral-200'
+                        : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:text-neutral-200'
                     }`}
                   >
                     {tab === 'login' ? 'Login' : 'Sign Up'}
@@ -192,17 +192,17 @@ const Auth = () => {
                       className="space-y-4 overflow-hidden"
                     >
                       <div>
-                        <label className="block text-xs font-medium text-neutral-400 mb-2">Full Name</label>
+                        <label className="block text-xs font-medium text-neutral-600 dark:text-neutral-400 mb-2">Full Name</label>
                         <div className="relative">
-                          <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" />
+                          <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 dark:text-neutral-500" />
                           <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your full name" className={inputClass('name')} />
                         </div>
                         {errors.name && <p className="text-red-400 text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" />{errors.name}</p>}
                       </div>
                       <div>
-                        <label className="block text-xs font-medium text-neutral-400 mb-2">Phone Number</label>
+                        <label className="block text-xs font-medium text-neutral-600 dark:text-neutral-400 mb-2">Phone Number</label>
                         <div className="relative">
-                          <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" />
+                          <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 dark:text-neutral-500" />
                           <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="10-digit mobile number" className={inputClass('phone')} />
                         </div>
                         {errors.phone && <p className="text-red-400 text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" />{errors.phone}</p>}
@@ -212,20 +212,20 @@ const Auth = () => {
                 </AnimatePresence>
 
                 <div>
-                  <label className="block text-xs font-medium text-neutral-400 mb-2">Email Address</label>
+                  <label className="block text-xs font-medium text-neutral-600 dark:text-neutral-400 mb-2">Email Address</label>
                   <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" />
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 dark:text-neutral-500" />
                     <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="you@example.com" className={inputClass('email')} />
                   </div>
                   {errors.email && <p className="text-red-400 text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" />{errors.email}</p>}
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-neutral-400 mb-2">Password</label>
+                  <label className="block text-xs font-medium text-neutral-600 dark:text-neutral-400 mb-2">Password</label>
                   <div className="relative">
-                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" />
+                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 dark:text-neutral-500" />
                     <input type={showPassword ? 'text' : 'password'} name="password" value={formData.password} onChange={handleChange} placeholder={activeTab === 'login' ? 'Your password' : 'Min. 6 characters'} className={`${inputClass('password')} pr-12`} />
-                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-neutral-300">
+                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 dark:text-neutral-500 hover:text-neutral-700 dark:text-neutral-300">
                       {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                     </button>
                   </div>
@@ -241,11 +241,11 @@ const Auth = () => {
                       exit={{ opacity: 0, height: 0 }}
                       className="overflow-hidden"
                     >
-                      <label className="block text-xs font-medium text-neutral-400 mb-2">Confirm Password</label>
+                      <label className="block text-xs font-medium text-neutral-600 dark:text-neutral-400 mb-2">Confirm Password</label>
                       <div className="relative">
-                        <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" />
+                        <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 dark:text-neutral-500" />
                         <input type={showConfirmPassword ? 'text' : 'password'} name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="Repeat password" className={`${inputClass('confirmPassword')} pr-12`} />
-                        <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-neutral-300">
+                        <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 dark:text-neutral-500 hover:text-neutral-700 dark:text-neutral-300">
                           {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                         </button>
                       </div>
@@ -257,20 +257,20 @@ const Auth = () => {
                 {activeTab === 'login' && (
                   <div className="flex items-center justify-between">
                     <label className="flex items-center gap-2 cursor-pointer">
-                      <input type="checkbox" className="rounded border-neutral-600 bg-neutral-800 text-neutral-100" />
-                      <span className="text-xs text-neutral-400">Remember me</span>
+                      <input type="checkbox" className="rounded border-neutral-300 dark:border-neutral-600 bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100" />
+                      <span className="text-xs text-neutral-600 dark:text-neutral-400">Remember me</span>
                     </label>
-                    <Link to="/forgot-password" className="text-xs text-neutral-300 hover:text-neutral-100 transition-colors">Forgot password?</Link>
+                    <Link to="/forgot-password" className="text-xs text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:text-neutral-100 transition-colors">Forgot password?</Link>
                   </div>
                 )}
 
                 {activeTab === 'signup' && (
-                  <div className="flex items-start gap-3 p-3 bg-neutral-800 rounded-xl border border-neutral-700">
+                  <div className="flex items-start gap-3 p-3 bg-neutral-100 dark:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-700">
                     <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <p className="text-xs text-neutral-400">
+                    <p className="text-xs text-neutral-600 dark:text-neutral-400">
                       By signing up, you agree to our{' '}
-                      <Link to="/terms" className="text-neutral-200 hover:text-white">Terms of Service</Link>{' '}and{' '}
-                      <Link to="/privacy" className="text-neutral-200 hover:text-white">Privacy Policy</Link>
+                      <Link to="/terms" className="text-neutral-800 dark:text-neutral-200 hover:text-white">Terms of Service</Link>{' '}and{' '}
+                      <Link to="/privacy" className="text-neutral-800 dark:text-neutral-200 hover:text-white">Privacy Policy</Link>
                     </p>
                   </div>
                 )}
@@ -292,15 +292,15 @@ const Auth = () => {
               </form>
 
               <div className="flex items-center gap-4 my-6">
-                <div className="flex-1 h-px bg-neutral-800" />
-                <span className="text-xs text-neutral-500">or continue with</span>
-                <div className="flex-1 h-px bg-neutral-800" />
+                <div className="flex-1 h-px bg-neutral-100 dark:bg-neutral-800" />
+                <span className="text-xs text-neutral-500 dark:text-neutral-500">or continue with</span>
+                <div className="flex-1 h-px bg-neutral-100 dark:bg-neutral-800" />
               </div>
 
               <button
                 onClick={handleGoogleLogin}
                 disabled={loading}
-                className="w-full bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-neutral-200 font-medium py-3.5 rounded-xl transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                className="w-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 border border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 font-medium py-3.5 rounded-xl transition-all flex items-center justify-center gap-3 disabled:opacity-50"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>

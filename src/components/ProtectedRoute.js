@@ -26,7 +26,7 @@ const ProtectedRoute = ({ children, requireAdmin = false, requireSeller = false 
         <div className="text-center">
           <div className="text-6xl mb-4">🚫</div>
           <h2 className="text-2xl font-bold mb-2">Access Denied</h2>
-          <p className="text-neutral-400 mb-6">
+          <p className="text-neutral-600 dark:text-neutral-400 mb-6">
             You don't have permission to access this page.
           </p>
           <Navigate to="/dashboard" replace />
@@ -42,7 +42,7 @@ const ProtectedRoute = ({ children, requireAdmin = false, requireSeller = false 
         <div className="text-center">
           <div className="text-6xl mb-4">🚫</div>
           <h2 className="text-2xl font-bold mb-2">Seller Access Required</h2>
-          <p className="text-neutral-400 mb-6">
+          <p className="text-neutral-600 dark:text-neutral-400 mb-6">
             You need to be a verified seller to access this page.
           </p>
           <Navigate to="/seller/apply" replace />

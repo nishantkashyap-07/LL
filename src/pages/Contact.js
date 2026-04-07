@@ -41,15 +41,24 @@ const Contact = () => {
   ];
 
   return (
-    <div className="pt-20 bg-neutral-950">
+    <div className="pt-20 bg-neutral-50 dark:bg-neutral-950">
       {/* Hero */}
-      <section className="section-padding-sm border-b border-neutral-800/50">
+      <section className="section-padding-sm border-b border-neutral-200 dark:border-neutral-800/50">
         <div className="container-elegant text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-neutral-50">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ type: 'spring', stiffness: 280, damping: 22 }}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-full text-xs font-semibold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-6 shadow-sm"
+            >
+              <MapPin className="w-3.5 h-3.5 text-secondary-400" />
+              We're available 24/7
+            </motion.div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-neutral-900 dark:text-neutral-100">
               Get in <span className="text-gradient">Touch</span>
             </h1>
-            <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
+            <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
               Have questions? Send us a message and we'll respond as soon as possible.
             </p>
           </motion.div>
@@ -61,15 +70,22 @@ const Contact = () => {
         <div className="container-elegant">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {contactInfo.map((info, index) => (
-              <motion.div key={index} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }}>
-                <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 text-center hover-elegant">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ type: 'spring', stiffness: 300, damping: 24, delay: index * 0.08 }}
+                whileHover={{ y: -6, scale: 1.01 }}
+              >
+                <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 text-center transition-shadow duration-300 hover:shadow-elegant-lg h-full">
                   <div className={`w-11 h-11 ${info.bg} rounded-xl flex items-center justify-center mx-auto mb-4`}>
                     <info.icon className={`w-5 h-5 ${info.color}`} />
                   </div>
-                  <h3 className="text-base font-semibold text-neutral-100 mb-3">{info.title}</h3>
+                  <h3 className="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-3">{info.title}</h3>
                   <div className="space-y-1">
                     {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-xs text-neutral-500">{detail}</p>
+                      <p key={idx} className="text-xs text-neutral-500 dark:text-neutral-500">{detail}</p>
                     ))}
                   </div>
                 </div>
@@ -80,30 +96,30 @@ const Contact = () => {
       </section>
 
       {/* Form & Map */}
-      <section className="section-padding border-t border-neutral-800/50">
+      <section className="section-padding border-t border-neutral-200 dark:border-neutral-800/50">
         <div className="container-elegant">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Form */}
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
-              <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-8">
-                <h2 className="text-xl font-bold text-neutral-100 mb-6">Send us a Message</h2>
+              <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8">
+                <h2 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-6">Send us a Message</h2>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-neutral-400">Full Name</label>
+                      <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Full Name</label>
                       <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your full name" required className="input-elegant" />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2 text-neutral-400">Phone Number</label>
+                      <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Phone Number</label>
                       <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Your phone number" className="input-elegant" />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-neutral-400">Email Address</label>
+                    <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Email Address</label>
                     <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Your email address" required className="input-elegant" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-neutral-400">Subject</label>
+                    <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Subject</label>
                     <select name="subject" value={formData.subject} onChange={handleChange} required className="input-elegant">
                       <option value="">Select a subject</option>
                       <option value="booking">Booking Inquiry</option>
@@ -114,7 +130,7 @@ const Contact = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-neutral-400">Message</label>
+                    <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Message</label>
                     <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell us how we can help..." rows={5} required className="input-elegant resize-none" />
                   </div>
                   <motion.button type="submit" disabled={loading} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
@@ -131,37 +147,37 @@ const Contact = () => {
 
             {/* Map & Quick Contact */}
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} className="space-y-6">
-              <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6">
-                <h3 className="text-lg font-semibold text-neutral-100 mb-4">Find Us</h3>
-                <div className="aspect-video bg-neutral-800 rounded-xl flex items-center justify-center">
+              <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
+                <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-4">Find Us</h3>
+                <div className="aspect-video bg-neutral-100 dark:bg-neutral-800 rounded-xl flex items-center justify-center">
                   <div className="text-center">
-                    <MapPin className="w-10 h-10 text-neutral-500 mx-auto mb-2" />
-                    <p className="text-neutral-400 text-sm">Mumbai, Maharashtra</p>
+                    <MapPin className="w-10 h-10 text-neutral-500 dark:text-neutral-500 mx-auto mb-2" />
+                    <p className="text-neutral-600 dark:text-neutral-400 text-sm">Mumbai, Maharashtra</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6">
-                <h3 className="text-lg font-semibold text-neutral-100 mb-4">Quick Contact</h3>
+              <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
+                <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-4">Quick Contact</h3>
                 <div className="space-y-2">
-                  <a href="tel:+919876543210" className="flex items-center gap-3 p-3 rounded-xl hover:bg-neutral-800 transition-colors text-neutral-300 text-sm">
-                    <Phone className="w-4 h-4 text-neutral-500" /><span>+91 98765 43210</span>
+                  <a href="tel:+919876543210" className="flex items-center gap-3 p-3 rounded-xl hover:bg-neutral-100 dark:bg-neutral-800 transition-colors text-neutral-700 dark:text-neutral-300 text-sm">
+                    <Phone className="w-4 h-4 text-neutral-500 dark:text-neutral-500" /><span>+91 98765 43210</span>
                   </a>
-                  <a href="mailto:hello@livinlease.com" className="flex items-center gap-3 p-3 rounded-xl hover:bg-neutral-800 transition-colors text-neutral-300 text-sm">
-                    <Mail className="w-4 h-4 text-neutral-500" /><span>hello@livinlease.com</span>
+                  <a href="mailto:hello@livinlease.com" className="flex items-center gap-3 p-3 rounded-xl hover:bg-neutral-100 dark:bg-neutral-800 transition-colors text-neutral-700 dark:text-neutral-300 text-sm">
+                    <Mail className="w-4 h-4 text-neutral-500 dark:text-neutral-500" /><span>hello@livinlease.com</span>
                   </a>
-                  <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-neutral-800 transition-colors text-neutral-300 text-sm">
-                    <MessageCircle className="w-4 h-4 text-neutral-500" /><span>WhatsApp Support</span>
+                  <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-neutral-100 dark:bg-neutral-800 transition-colors text-neutral-700 dark:text-neutral-300 text-sm">
+                    <MessageCircle className="w-4 h-4 text-neutral-500 dark:text-neutral-500" /><span>WhatsApp Support</span>
                   </a>
                 </div>
               </div>
 
-              <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6">
-                <h3 className="text-lg font-semibold text-neutral-100 mb-4">Follow Us</h3>
+              <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
+                <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-4">Follow Us</h3>
                 <div className="flex gap-3">
                   {socialLinks.map((social, index) => (
                     <a key={index} href={social.href} aria-label={social.label}
-                      className="p-3 bg-neutral-800 hover:bg-neutral-700 rounded-xl transition-colors text-neutral-400 hover:text-neutral-100">
+                      className="p-3 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-xl transition-colors text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:text-neutral-100">
                       <social.icon className="w-4 h-4" />
                     </a>
                   ))}
@@ -173,20 +189,20 @@ const Contact = () => {
       </section>
 
       {/* FAQ */}
-      <section className="section-padding border-t border-neutral-800/50 bg-neutral-900/30">
+      <section className="section-padding border-t border-neutral-200 dark:border-neutral-800/50 bg-white dark:bg-neutral-900/30">
         <div className="container-elegant">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-neutral-50 mb-3">
+            <h2 className="text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
               Frequently Asked <span className="text-gradient">Questions</span>
             </h2>
-            <p className="text-neutral-400 max-w-xl mx-auto">Quick answers to common questions about our services</p>
+            <p className="text-neutral-600 dark:text-neutral-400 max-w-xl mx-auto">Quick answers to common questions about our services</p>
           </div>
           <div className="max-w-3xl mx-auto space-y-4">
             {faqs.map((faq, index) => (
               <motion.div key={index} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }}>
-                <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6">
-                  <h3 className="text-base font-semibold text-neutral-100 mb-2">{faq.question}</h3>
-                  <p className="text-neutral-400 text-sm">{faq.answer}</p>
+                <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
+                  <h3 className="text-base font-semibold text-neutral-900 dark:text-neutral-100 mb-2">{faq.question}</h3>
+                  <p className="text-neutral-600 dark:text-neutral-400 text-sm">{faq.answer}</p>
                 </div>
               </motion.div>
             ))}

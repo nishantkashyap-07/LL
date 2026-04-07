@@ -14,7 +14,7 @@ const MainLayout = ({ children }) => {
   const showNavbar = !noNavbarPages.includes(location.pathname);
 
   return (
-    <div className="min-h-screen bg-neutral-950 dark flex flex-col">
+    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950 dark flex flex-col">
       {showNavbar && <Navbar />}
       
       <main className="flex-1">

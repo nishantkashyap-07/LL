@@ -7,6 +7,7 @@ import ErrorBoundary from './components/ui/ErrorBoundary';
 import ProtectedRoute from './components/ProtectedRoute';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 // Public Pages
 import LandingPage from './pages/LandingPage';
@@ -65,7 +66,8 @@ function App() {
         <ThemeProvider>
           <AuthProvider>
             <Router>
-              <div className="min-h-screen bg-neutral-950 dark">
+              <ScrollToTop />
+              <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 transition-colors duration-300">
                 <Navbar />
                 <main>
                   <Routes>

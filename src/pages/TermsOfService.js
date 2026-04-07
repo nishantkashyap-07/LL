@@ -99,17 +99,17 @@ const TermsOfService = () => {
               <FileText className="w-8 h-8 text-secondary-400" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Terms of Service</h1>
-            <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
+            <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
               Please read these terms carefully before using our services
             </p>
-            <p className="text-sm text-neutral-500 mt-4">Last updated: January 2024</p>
+            <p className="text-sm text-neutral-500 dark:text-neutral-500 mt-4">Last updated: January 2024</p>
           </motion.div>
         </Container>
       </div>
 
       <Container size="md" className="py-12">
         <Stack spacing="xl">
-          <Link to="/" className="inline-flex items-center space-x-2 text-neutral-400 hover:text-white transition-colors">
+          <Link to="/" className="inline-flex items-center space-x-2 text-neutral-600 dark:text-neutral-400 hover:text-white transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Home</span>
           </Link>
@@ -122,7 +122,7 @@ const TermsOfService = () => {
               </div>
               <div>
                 <h2 className="text-2xl font-bold mb-4 text-white">Welcome to LivinLease</h2>
-                <p className="text-neutral-400 leading-relaxed">
+                <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
                   These Terms of Service govern your use of LivinLease's vehicle rental platform and services.
                   By using our platform, you agree to these terms in full. Please read them carefully and
                   contact us if you have any questions.
@@ -143,7 +143,7 @@ const TermsOfService = () => {
                 <h3 className="text-xl font-semibold mb-4 text-primary-400">{section.title}</h3>
                 <div className="space-y-3">
                   {section.content.map((paragraph, idx) => (
-                    <p key={idx} className="text-neutral-400 leading-relaxed">{paragraph}</p>
+                    <p key={idx} className="text-neutral-600 dark:text-neutral-400 leading-relaxed">{paragraph}</p>
                   ))}
                 </div>
               </Card>
@@ -153,8 +153,8 @@ const TermsOfService = () => {
           {/* Contact */}
           <Card variant="glass" padding="lg" className="bg-primary-500/5 border-primary-500/20">
             <h3 className="text-xl font-semibold mb-4 text-white">Questions About These Terms?</h3>
-            <p className="text-neutral-400 mb-4">If you have any questions about these Terms of Service:</p>
-            <div className="space-y-2 text-sm text-neutral-400">
+            <p className="text-neutral-600 dark:text-neutral-400 mb-4">If you have any questions about these Terms of Service:</p>
+            <div className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
               <p><span className="text-white font-medium">Email:</span> legal@livinlease.com</p>
               <p><span className="text-white font-medium">Phone:</span> +91 98765 43210</p>
               <p><span className="text-white font-medium">Address:</span> 123 Business District, Mumbai, Maharashtra 400001</p>

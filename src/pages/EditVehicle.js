@@ -6,12 +6,12 @@ import MetaTags from '../components/SEO/MetaTags';
 import toast from 'react-hot-toast';
 import { vehicleServices } from '../firebase/services';
 
-const inputClass = "w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-xl focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all text-neutral-100 placeholder:text-neutral-500 outline-none";
-const selectClass = "w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-xl focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all text-neutral-100 outline-none";
+const inputClass = "w-full px-4 py-3 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-500 dark:text-neutral-500 outline-none";
+const selectClass = "w-full px-4 py-3 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all text-neutral-900 dark:text-neutral-100 outline-none";
 
 const SectionCard = ({ title, children }) => (
-  <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6">
-    <h2 className="text-lg font-semibold text-neutral-100 mb-6 pb-4 border-b border-neutral-800">{title}</h2>
+  <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
+    <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-6 pb-4 border-b border-neutral-200 dark:border-neutral-800">{title}</h2>
     {children}
   </div>
 );
@@ -84,17 +84,17 @@ const EditVehicle = () => {
   };
 
   return (
-    <div className="pt-20 min-h-screen bg-neutral-950">
+    <div className="pt-20 min-h-screen bg-neutral-50 dark:bg-neutral-950">
       <MetaTags title="Edit Vehicle" description="Update vehicle details" />
       <div className="container-elegant py-12">
         <div className="flex items-center gap-4 mb-8">
           <button onClick={() => navigate('/seller/vehicles')}
-            className="p-2 bg-neutral-800 hover:bg-neutral-700 rounded-xl transition-colors">
-            <ArrowLeft className="w-5 h-5 text-neutral-300" />
+            className="p-2 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-xl transition-colors">
+            <ArrowLeft className="w-5 h-5 text-neutral-700 dark:text-neutral-300" />
           </button>
           <div>
             <h1 className="text-3xl font-bold text-neutral-50 mb-1">Edit Vehicle</h1>
-            <p className="text-neutral-500 text-sm">Update your vehicle details</p>
+            <p className="text-neutral-500 dark:text-neutral-500 text-sm">Update your vehicle details</p>
           </div>
         </div>
 
@@ -102,11 +102,11 @@ const EditVehicle = () => {
           <SectionCard title="Basic Information">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Vehicle Name</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Vehicle Name</label>
                 <input type="text" name="name" value={formData.name} onChange={handleChange} required className={inputClass} />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Vehicle Type</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Vehicle Type</label>
                 <select name="type" value={formData.type} onChange={handleChange} required className={selectClass}>
                   <option value="car">Car</option>
                   <option value="bike">Bike</option>
@@ -114,23 +114,23 @@ const EditVehicle = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Brand</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Brand</label>
                 <input type="text" name="brand" value={formData.brand} onChange={handleChange} required className={inputClass} />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Model</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Model</label>
                 <input type="text" name="model" value={formData.model} onChange={handleChange} required className={inputClass} />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Year</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Year</label>
                 <input type="number" name="year" value={formData.year} onChange={handleChange} required className={inputClass} />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Price per Day (Rs.)</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Price per Day (Rs.)</label>
                 <input type="number" name="pricePerDay" value={formData.pricePerDay} onChange={handleChange} required className={inputClass} />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Price per Hour (?)</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Price per Hour (?)</label>
                 <input type="number" name="pricePerHour" value={formData.pricePerHour} onChange={handleChange} className={inputClass} placeholder="Optional" />
               </div>
             </div>
@@ -139,7 +139,7 @@ const EditVehicle = () => {
           <SectionCard title="Specifications">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Fuel Type</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Fuel Type</label>
                 <select name="fuel" value={formData.fuel} onChange={handleChange} required className={selectClass}>
                   <option value="petrol">Petrol</option>
                   <option value="diesel">Diesel</option>
@@ -148,22 +148,22 @@ const EditVehicle = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Transmission</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Transmission</label>
                 <select name="transmission" value={formData.transmission} onChange={handleChange} required className={selectClass}>
                   <option value="manual">Manual</option>
                   <option value="automatic">Automatic</option>
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Seats</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Seats</label>
                 <input type="number" name="seats" value={formData.seats} onChange={handleChange} required className={inputClass} />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Mileage (km/l)</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Mileage (km/l)</label>
                 <input type="number" name="mileage" value={formData.mileage} onChange={handleChange} className={inputClass} />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Location</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Location</label>
                 <input type="text" name="location" value={formData.location} onChange={handleChange} required className={inputClass} />
               </div>
             </div>
@@ -172,28 +172,28 @@ const EditVehicle = () => {
           <SectionCard title="Additional Details">
             <div className="space-y-5">
               <div>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Description</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Description</label>
                 <textarea name="description" value={formData.description} onChange={handleChange} rows={4}
                   className={inputClass + " resize-none"} />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">Features (comma separated)</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">Features (comma separated)</label>
                 <input type="text" name="features" value={formData.features} onChange={handleChange} className={inputClass} />
               </div>
             </div>
           </SectionCard>
 
           <SectionCard title="Vehicle Images">
-            <div className="border-2 border-dashed border-neutral-700 rounded-xl p-12 text-center hover:border-neutral-500 transition-colors cursor-pointer">
+            <div className="border-2 border-dashed border-neutral-200 dark:border-neutral-700 rounded-xl p-12 text-center hover:border-neutral-500 transition-colors cursor-pointer">
               <Upload className="w-10 h-10 text-neutral-600 mx-auto mb-3" />
-              <p className="text-neutral-300 mb-1">Click to upload new images</p>
-              <p className="text-sm text-neutral-500">PNG, JPG up to 5MB - Max 5 images</p>
+              <p className="text-neutral-700 dark:text-neutral-300 mb-1">Click to upload new images</p>
+              <p className="text-sm text-neutral-500 dark:text-neutral-500">PNG, JPG up to 5MB - Max 5 images</p>
             </div>
           </SectionCard>
 
           <div className="flex justify-end gap-3">
             <button type="button" onClick={() => navigate('/seller/vehicles')}
-              className="px-6 py-3 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 border border-neutral-700 rounded-xl transition-colors font-medium">
+              className="px-6 py-3 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 rounded-xl transition-colors font-medium">
               Cancel
             </button>
             <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="submit" disabled={loading}

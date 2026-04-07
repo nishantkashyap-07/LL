@@ -65,7 +65,7 @@ const Modal = ({
                     {showCloseButton && (
                       <button
                         type="button"
-                        className="p-2 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors"
+                        className="p-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-100 dark:bg-neutral-800 rounded-lg transition-colors"
                         onClick={onClose}
                       >
                         <X size={20} />

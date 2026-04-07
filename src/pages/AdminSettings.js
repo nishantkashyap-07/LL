@@ -47,13 +47,13 @@ const AdminSettings = () => {
 
   if (fetching) {
     return (
-      <div className="pt-20 min-h-screen flex items-center justify-center bg-neutral-950">
+      <div className="pt-20 min-h-screen flex items-center justify-center bg-neutral-50 dark:bg-neutral-950">
         <div className="w-8 h-8 border-2 border-neutral-400 border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
-  const inputClass = "w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-xl focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all text-neutral-100 placeholder:text-neutral-500 outline-none";
+  const inputClass = "w-full px-4 py-3 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-500 dark:text-neutral-500 outline-none";
 
   const fields = [
     { label: 'Platform Name', key: 'platformName', type: 'text' },
@@ -65,29 +65,29 @@ const AdminSettings = () => {
   ];
 
   return (
-    <div className="pt-20 min-h-screen bg-neutral-950">
+    <div className="pt-20 min-h-screen bg-neutral-50 dark:bg-neutral-950">
       <MetaTags title="Admin Settings" />
       <div className="container-elegant py-12">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-neutral-50 mb-1">Platform Settings</h1>
-          <p className="text-neutral-500 text-sm">Configure global platform parameters</p>
+          <p className="text-neutral-500 dark:text-neutral-500 text-sm">Configure global platform parameters</p>
         </div>
 
-        <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-8">
-          <div className="flex items-center gap-3 mb-8 pb-6 border-b border-neutral-800">
-            <div className="w-10 h-10 bg-neutral-800 rounded-xl flex items-center justify-center">
-              <Settings size={18} className="text-neutral-300" />
+        <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8">
+          <div className="flex items-center gap-3 mb-8 pb-6 border-b border-neutral-200 dark:border-neutral-800">
+            <div className="w-10 h-10 bg-neutral-100 dark:bg-neutral-800 rounded-xl flex items-center justify-center">
+              <Settings size={18} className="text-neutral-700 dark:text-neutral-300" />
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-neutral-100">General Configuration</h2>
-              <p className="text-neutral-500 text-xs">Changes apply platform-wide</p>
+              <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">General Configuration</h2>
+              <p className="text-neutral-500 dark:text-neutral-500 text-xs">Changes apply platform-wide</p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {fields.map(({ label, key, type }) => (
               <div key={key}>
-                <label className="block text-sm font-medium mb-2 text-neutral-400">{label}</label>
+                <label className="block text-sm font-medium mb-2 text-neutral-600 dark:text-neutral-400">{label}</label>
                 <input
                   type={type}
                   value={settings[key]}
@@ -98,7 +98,7 @@ const AdminSettings = () => {
             ))}
           </div>
 
-          <div className="flex justify-end pt-6 border-t border-neutral-800">
+          <div className="flex justify-end pt-6 border-t border-neutral-200 dark:border-neutral-800">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

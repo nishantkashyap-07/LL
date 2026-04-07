@@ -15,8 +15,8 @@ const PageHeader = ({
 }) => {
   const backgroundClasses = {
     gradient: 'bg-sophisticated-gradient',
-    dark: 'bg-neutral-900',
-    subtle: 'bg-neutral-900/50'
+    dark: 'bg-white dark:bg-neutral-900',
+    subtle: 'bg-white dark:bg-neutral-900/50'
   };
 
   return (

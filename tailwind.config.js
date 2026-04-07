@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'SF Pro Text', 'system-ui', 'Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        'display': ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'system-ui', 'Inter', 'Helvetica Neue', 'sans-serif'],
+        'sans': ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        'display': ['Outfit', 'system-ui', 'sans-serif'],
         'mono': ['SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', 'Consolas', 'monospace'],
       },
       fontSize: {

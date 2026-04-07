@@ -49,7 +49,7 @@ const Bookings = () => {
   const filtered = activeTab === 'all' ? bookings : bookings.filter(b => b.status === activeTab);
 
   return (
-    <div className="pt-20 min-h-screen bg-neutral-950">
+    <div className="pt-20 min-h-screen bg-neutral-50 dark:bg-neutral-950">
       <MetaTags title="My Bookings" description="View and manage your vehicle bookings" />
 
       <div className="container-elegant py-12">
@@ -57,7 +57,7 @@ const Bookings = () => {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-neutral-50 mb-1">My Bookings</h1>
-            <p className="text-neutral-500 text-sm">Track and manage all your vehicle rentals</p>
+            <p className="text-neutral-500 dark:text-neutral-500 text-sm">Track and manage all your vehicle rentals</p>
           </div>
           <Link to="/browse">
             <button className="bg-neutral-100 hover:bg-white text-neutral-900 font-semibold px-5 py-2.5 rounded-xl text-sm transition-all">
@@ -77,11 +77,11 @@ const Bookings = () => {
                 className={`px-4 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${
                   activeTab === tab.id
                     ? 'bg-neutral-100 text-neutral-900'
-                    : 'bg-neutral-800 text-neutral-400 hover:text-neutral-200 border border-neutral-700'
+                    : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700'
                 }`}
               >
                 {tab.label}
-                <span className={`px-1.5 py-0.5 rounded-full text-xs ${activeTab === tab.id ? 'bg-neutral-900/20' : 'bg-neutral-700'}`}>
+                <span className={`px-1.5 py-0.5 rounded-full text-xs ${activeTab === tab.id ? 'bg-white dark:bg-neutral-900/20' : 'bg-neutral-700'}`}>
                   {count}
                 </span>
               </button>
@@ -107,12 +107,12 @@ const Bookings = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.97 }}
                     transition={{ delay: i * 0.04 }}
-                    className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 hover:border-neutral-700 transition-all"
+                    className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-neutral-200 dark:border-neutral-700 transition-all"
                   >
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                       {/* Image */}
                       <div className="lg:col-span-3">
-                        <div className="relative rounded-xl overflow-hidden aspect-video lg:aspect-square bg-neutral-800">
+                        <div className="relative rounded-xl overflow-hidden aspect-video lg:aspect-square bg-neutral-100 dark:bg-neutral-800">
                           {booking.vehicle?.image && (
                             <img src={booking.vehicle.image} alt={booking.vehicle.name} className="w-full h-full object-cover" />
                           )}
@@ -128,34 +128,34 @@ const Bookings = () => {
                       {/* Details */}
                       <div className="lg:col-span-6 space-y-4">
                         <div>
-                          <div className="flex items-center gap-2 text-xs text-neutral-500 mb-1">
-                            <span className="text-neutral-300 font-medium">#{booking.id}</span>
+                          <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-500 mb-1">
+                            <span className="text-neutral-700 dark:text-neutral-300 font-medium">#{booking.id}</span>
                             <span>·</span>
                             <span>{booking.vehicle?.type}</span>
                           </div>
-                          <h3 className="text-xl font-bold text-neutral-100">{booking.vehicle?.name}</h3>
-                          <p className="text-sm text-neutral-500">{booking.vehicle?.brand}</p>
+                          <h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100">{booking.vehicle?.name}</h3>
+                          <p className="text-sm text-neutral-500 dark:text-neutral-500">{booking.vehicle?.brand}</p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                           <div className="flex items-start gap-2">
-                            <Calendar className="w-4 h-4 text-neutral-400 mt-0.5 flex-shrink-0" />
+                            <Calendar className="w-4 h-4 text-neutral-600 dark:text-neutral-400 mt-0.5 flex-shrink-0" />
                             <div>
-                              <p className="text-xs text-neutral-500 mb-0.5">Rental Period</p>
-                              <p className="text-sm text-neutral-200">{booking.startDate}</p>
-                              <p className="text-sm text-neutral-200">to {booking.endDate}</p>
+                              <p className="text-xs text-neutral-500 dark:text-neutral-500 mb-0.5">Rental Period</p>
+                              <p className="text-sm text-neutral-800 dark:text-neutral-200">{booking.startDate}</p>
+                              <p className="text-sm text-neutral-800 dark:text-neutral-200">to {booking.endDate}</p>
                             </div>
                           </div>
                           <div className="flex items-start gap-2">
-                            <MapPin className="w-4 h-4 text-neutral-400 mt-0.5 flex-shrink-0" />
+                            <MapPin className="w-4 h-4 text-neutral-600 dark:text-neutral-400 mt-0.5 flex-shrink-0" />
                             <div>
-                              <p className="text-xs text-neutral-500 mb-0.5">Location</p>
-                              <p className="text-sm text-neutral-200">{booking.location}</p>
+                              <p className="text-xs text-neutral-500 dark:text-neutral-500 mb-0.5">Location</p>
+                              <p className="text-sm text-neutral-800 dark:text-neutral-200">{booking.location}</p>
                             </div>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-4 pt-3 border-t border-neutral-800 text-xs text-neutral-500">
+                        <div className="flex items-center gap-4 pt-3 border-t border-neutral-200 dark:border-neutral-800 text-xs text-neutral-500 dark:text-neutral-500">
                           <div className="flex items-center gap-1.5">
                             <Phone className="w-3.5 h-3.5" />
                             <span>{booking.seller?.name}</span>
@@ -170,17 +170,17 @@ const Bookings = () => {
                       {/* Actions */}
                       <div className="lg:col-span-3 flex lg:flex-col justify-between lg:justify-start items-end lg:items-stretch gap-4">
                         <div className="lg:mb-auto">
-                          <p className="text-xs text-neutral-500 mb-0.5">Total Amount</p>
-                          <p className="text-2xl font-bold text-neutral-100">₹{booking.totalAmount}</p>
+                          <p className="text-xs text-neutral-500 dark:text-neutral-500 mb-0.5">Total Amount</p>
+                          <p className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">₹{booking.totalAmount}</p>
                         </div>
                         <div className="flex lg:flex-col gap-2 w-full">
-                          <button className="flex-1 flex items-center justify-center gap-1.5 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-neutral-300 px-3 py-2 rounded-lg text-xs transition-colors">
+                          <button className="flex-1 flex items-center justify-center gap-1.5 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 px-3 py-2 rounded-lg text-xs transition-colors">
                             <Eye size={14} /> View
                           </button>
-                          <button className="flex-1 flex items-center justify-center gap-1.5 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-neutral-300 px-3 py-2 rounded-lg text-xs transition-colors">
+                          <button className="flex-1 flex items-center justify-center gap-1.5 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 px-3 py-2 rounded-lg text-xs transition-colors">
                             <MessageCircle size={14} /> Contact
                           </button>
-                          <button className="flex-1 flex items-center justify-center gap-1.5 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-neutral-300 px-3 py-2 rounded-lg text-xs transition-colors">
+                          <button className="flex-1 flex items-center justify-center gap-1.5 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 px-3 py-2 rounded-lg text-xs transition-colors">
                             <Download size={14} /> Receipt
                           </button>
                         </div>
@@ -192,10 +192,10 @@ const Bookings = () => {
             </AnimatePresence>
           </div>
         ) : (
-          <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-16 text-center">
+          <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-16 text-center">
             <AlertCircle className="w-12 h-12 text-neutral-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-neutral-200 mb-2">No bookings found</h3>
-            <p className="text-neutral-500 text-sm mb-6">
+            <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 mb-2">No bookings found</h3>
+            <p className="text-neutral-500 dark:text-neutral-500 text-sm mb-6">
               {activeTab === 'all' ? "You haven't made any bookings yet" : `No ${activeTab} bookings at the moment`}
             </p>
             <Link to="/browse">

@@ -26,47 +26,47 @@ const AdminVehicles = () => {
   };
 
   if (loading) return (
-    <div className="pt-20 min-h-screen bg-neutral-950 flex items-center justify-center">
+    <div className="pt-20 min-h-screen bg-neutral-50 dark:bg-neutral-950 flex items-center justify-center">
       <div className="w-8 h-8 border-2 border-neutral-400 border-t-transparent rounded-full animate-spin" />
     </div>
   );
 
   return (
-    <div className="pt-20 min-h-screen bg-neutral-950">
+    <div className="pt-20 min-h-screen bg-neutral-50 dark:bg-neutral-950">
       <MetaTags title="Vehicle Management" />
 
       <div className="container-elegant py-12">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-neutral-50 mb-1">Vehicle Management</h1>
-            <p className="text-neutral-500 text-sm">Review and approve vehicle listings</p>
+            <p className="text-neutral-500 dark:text-neutral-500 text-sm">Review and approve vehicle listings</p>
           </div>
           <div className="text-right">
-            <p className="text-2xl font-bold text-neutral-100">{vehicles.length}</p>
-            <p className="text-xs text-neutral-500">Total Vehicles</p>
+            <p className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">{vehicles.length}</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-500">Total Vehicles</p>
           </div>
         </div>
 
         <div className="space-y-4">
           {vehicles.length === 0 ? (
-            <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-16 text-center">
+            <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-16 text-center">
               <p className="text-neutral-600 text-sm">No vehicles found</p>
             </div>
           ) : (
             vehicles.map((vehicle, i) => (
               <motion.div key={vehicle.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
-                className="bg-neutral-900 border border-neutral-800 rounded-xl p-5 hover:border-neutral-700 transition-all">
+                className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-5 hover:border-neutral-200 dark:border-neutral-700 transition-all">
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex items-center gap-4">
                     <img
                       src={vehicle.image || vehicle.images?.[0] || '/images/vehicles/hondo-activa-6G.png'}
                       alt={vehicle.name}
-                      className="w-20 h-14 object-cover rounded-lg flex-shrink-0 bg-neutral-800"
+                      className="w-20 h-14 object-cover rounded-lg flex-shrink-0 bg-neutral-100 dark:bg-neutral-800"
                     />
                     <div>
-                      <h3 className="text-base font-bold text-neutral-100">{vehicle.name || vehicle.model || 'N/A'}</h3>
-                      <p className="text-xs text-neutral-500 mt-0.5">Seller: {vehicle.sellerName || vehicle.ownerId || 'N/A'}</p>
-                      <p className="text-sm font-semibold text-neutral-300 mt-0.5">₹{vehicle.price || vehicle.pricePerDay || 0}/day</p>
+                      <h3 className="text-base font-bold text-neutral-900 dark:text-neutral-100">{vehicle.name || vehicle.model || 'N/A'}</h3>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-500 mt-0.5">Seller: {vehicle.sellerName || vehicle.ownerId || 'N/A'}</p>
+                      <p className="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mt-0.5">₹{vehicle.price || vehicle.pricePerDay || 0}/day</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 flex-shrink-0">
@@ -85,8 +85,8 @@ const AdminVehicles = () => {
                         </button>
                       </>
                     )}
-                    <button className="p-2 bg-neutral-800 hover:bg-neutral-700 rounded-lg transition-colors">
-                      <Eye size={16} className="text-neutral-400" />
+                    <button className="p-2 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-lg transition-colors">
+                      <Eye size={16} className="text-neutral-600 dark:text-neutral-400" />
                     </button>
                   </div>
                 </div>

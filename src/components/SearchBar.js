@@ -30,38 +30,38 @@ const SearchBar = () => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-neutral-900/60 backdrop-blur-xl border border-neutral-800/50 rounded-3xl p-8 shadow-2xl max-w-6xl mx-auto"
+      className="bg-white dark:bg-neutral-900/60 backdrop-blur-xl border border-neutral-200 dark:border-neutral-800/50 rounded-3xl p-8 shadow-2xl max-w-6xl mx-auto"
     >
       <form onSubmit={handleSearch} className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Location */}
         <div className="lg:col-span-2">
-          <label className="block text-sm font-semibold text-neutral-300 mb-3">
+          <label className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
             Pickup Location
           </label>
           <div className="relative">
-            <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
+            <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-600 dark:text-neutral-400 w-5 h-5" />
             <input
               type="text"
               placeholder="Enter city or area..."
               value={searchData.location}
               onChange={(e) => setSearchData({ ...searchData, location: e.target.value })}
-              className="w-full pl-12 pr-4 py-4 bg-neutral-800/50 border border-neutral-700/50 rounded-2xl focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all duration-300 text-white placeholder:text-neutral-400 backdrop-blur-sm"
+              className="w-full pl-12 pr-4 py-4 bg-neutral-100 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700/50 rounded-2xl focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all duration-300 text-white placeholder:text-neutral-600 dark:text-neutral-400 backdrop-blur-sm"
             />
           </div>
         </div>
 
         {/* Pickup Date */}
         <div>
-          <label className="block text-sm font-semibold text-neutral-300 mb-3">
+          <label className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
             Pickup Date
           </label>
           <div className="relative">
-            <Calendar className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
+            <Calendar className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-600 dark:text-neutral-400 w-5 h-5" />
             <input
               type="date"
               value={searchData.pickupDate}
               onChange={(e) => setSearchData({ ...searchData, pickupDate: e.target.value })}
-              className="w-full pl-12 pr-4 py-4 bg-neutral-800/50 border border-neutral-700/50 rounded-2xl focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all duration-300 text-white backdrop-blur-sm"
+              className="w-full pl-12 pr-4 py-4 bg-neutral-100 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700/50 rounded-2xl focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all duration-300 text-white backdrop-blur-sm"
               min={new Date().toISOString().split('T')[0]}
             />
           </div>
@@ -69,16 +69,16 @@ const SearchBar = () => {
 
         {/* Return Date */}
         <div>
-          <label className="block text-sm font-semibold text-neutral-300 mb-3">
+          <label className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
             Return Date
           </label>
           <div className="relative">
-            <Calendar className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
+            <Calendar className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-600 dark:text-neutral-400 w-5 h-5" />
             <input
               type="date"
               value={searchData.returnDate}
               onChange={(e) => setSearchData({ ...searchData, returnDate: e.target.value })}
-              className="w-full pl-12 pr-4 py-4 bg-neutral-800/50 border border-neutral-700/50 rounded-2xl focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all duration-300 text-white backdrop-blur-sm"
+              className="w-full pl-12 pr-4 py-4 bg-neutral-100 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700/50 rounded-2xl focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all duration-300 text-white backdrop-blur-sm"
               min={searchData.pickupDate || new Date().toISOString().split('T')[0]}
             />
           </div>
@@ -86,18 +86,18 @@ const SearchBar = () => {
 
         {/* Vehicle Type */}
         <div>
-          <label className="block text-sm font-semibold text-neutral-300 mb-3">
+          <label className="block text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
             Vehicle Type
           </label>
           <div className="relative">
-            <Car className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
+            <Car className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-600 dark:text-neutral-400 w-5 h-5" />
             <select
               value={searchData.vehicleType}
               onChange={(e) => setSearchData({ ...searchData, vehicleType: e.target.value })}
-              className="w-full pl-12 pr-4 py-4 bg-neutral-800/50 border border-neutral-700/50 rounded-2xl focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all duration-300 text-white backdrop-blur-sm appearance-none cursor-pointer"
+              className="w-full pl-12 pr-4 py-4 bg-neutral-100 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700/50 rounded-2xl focus:ring-2 focus:ring-white/20 focus:border-white/30 transition-all duration-300 text-white backdrop-blur-sm appearance-none cursor-pointer"
             >
               {vehicleTypes.map((type) => (
-                <option key={type.value} value={type.value} className="bg-neutral-800 text-white">
+                <option key={type.value} value={type.value} className="bg-neutral-100 dark:bg-neutral-800 text-white">
                   {type.icon} {type.label}
                 </option>
               ))}
@@ -120,9 +120,9 @@ const SearchBar = () => {
       </form>
 
       {/* Quick Filters */}
-      <div className="mt-8 pt-6 border-t border-neutral-800/50">
+      <div className="mt-8 pt-6 border-t border-neutral-200 dark:border-neutral-800/50">
         <div className="flex flex-wrap items-center gap-3">
-          <span className="text-sm font-medium text-neutral-400 flex items-center">
+          <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400 flex items-center">
             <Filter className="w-4 h-4 mr-2" />
             Quick Filters:
           </span>
@@ -145,7 +145,7 @@ const SearchBar = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={filter.action}
-              className="px-4 py-2 text-sm bg-neutral-800/50 hover:bg-neutral-700/50 text-neutral-300 hover:text-white rounded-xl transition-all duration-300 font-medium backdrop-blur-sm border border-neutral-700/30"
+              className="px-4 py-2 text-sm bg-neutral-100 dark:bg-neutral-800/50 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 text-neutral-700 dark:text-neutral-300 hover:text-white rounded-xl transition-all duration-300 font-medium backdrop-blur-sm border border-neutral-200 dark:border-neutral-700/30"
             >
               {filter.label}
             </motion.button>

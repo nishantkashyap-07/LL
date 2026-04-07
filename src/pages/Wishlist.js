@@ -62,21 +62,21 @@ const Wishlist = () => {
   };
 
   return (
-    <div className="pt-20 min-h-screen bg-neutral-950">
+    <div className="pt-20 min-h-screen bg-neutral-50 dark:bg-neutral-950">
       <MetaTags title="My Wishlist" description="Your saved vehicles" />
 
       <div className="container-elegant py-12">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-neutral-50 mb-1">My Wishlist</h1>
-            <p className="text-neutral-500 text-sm">
+            <p className="text-neutral-500 dark:text-neutral-500 text-sm">
               {wishlist.length > 0 ? `${wishlist.length} vehicle${wishlist.length > 1 ? 's' : ''} saved` : 'No vehicles saved yet'}
             </p>
           </div>
           {wishlist.length > 0 && (
             <button
               onClick={handleClearAll}
-              className="flex items-center gap-2 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-red-400 px-4 py-2.5 rounded-xl text-sm transition-colors"
+              className="flex items-center gap-2 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 border border-neutral-200 dark:border-neutral-700 text-red-400 px-4 py-2.5 rounded-xl text-sm transition-colors"
             >
               <Trash2 size={14} /> Clear All
             </button>
@@ -98,7 +98,7 @@ const Wishlist = () => {
                   exit={{ opacity: 0, scale: 0.95, x: -60 }}
                   transition={{ delay: i * 0.05 }}
                   layout
-                  className="bg-neutral-900 border border-neutral-800 rounded-2xl overflow-hidden hover:border-neutral-700 transition-all group"
+                  className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden hover:border-neutral-200 dark:border-neutral-700 transition-all group"
                 >
                   {/* Image */}
                   <div className="relative aspect-video overflow-hidden">
@@ -130,33 +130,33 @@ const Wishlist = () => {
                   {/* Content */}
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs text-neutral-400 font-medium">{vehicle.type}</span>
+                      <span className="text-xs text-neutral-600 dark:text-neutral-400 font-medium">{vehicle.type}</span>
                       <div className="flex items-center gap-1 text-xs">
                         <span className="text-amber-400">★</span>
-                        <span className="text-neutral-300">{vehicle.rating}</span>
+                        <span className="text-neutral-700 dark:text-neutral-300">{vehicle.rating}</span>
                         <span className="text-neutral-600">({vehicle.reviews})</span>
                       </div>
                     </div>
-                    <h3 className="text-base font-bold text-neutral-100 mb-0.5">{vehicle.name}</h3>
-                    <p className="text-xs text-neutral-500 mb-3">{vehicle.brand}</p>
+                    <h3 className="text-base font-bold text-neutral-900 dark:text-neutral-100 mb-0.5">{vehicle.name}</h3>
+                    <p className="text-xs text-neutral-500 dark:text-neutral-500 mb-3">{vehicle.brand}</p>
 
-                    <div className="flex items-center gap-4 text-xs text-neutral-500 mb-3">
+                    <div className="flex items-center gap-4 text-xs text-neutral-500 dark:text-neutral-500 mb-3">
                       <span className="flex items-center gap-1"><Fuel className="w-3.5 h-3.5" />{vehicle.fuel}</span>
                       <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" />{vehicle.seats} Seats</span>
                       <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5" />{vehicle.transmission}</span>
                     </div>
 
-                    <div className="flex items-center gap-1 text-xs text-neutral-500 mb-4">
+                    <div className="flex items-center gap-1 text-xs text-neutral-500 dark:text-neutral-500 mb-4">
                       <MapPin className="w-3.5 h-3.5" />{vehicle.location}
                     </div>
 
-                    <div className="flex items-center justify-between pt-3 border-t border-neutral-800">
+                    <div className="flex items-center justify-between pt-3 border-t border-neutral-200 dark:border-neutral-800">
                       <div>
-                        <p className="text-xs text-neutral-500">Per day</p>
-                        <p className="text-lg font-bold text-neutral-100">₹{vehicle.pricePerDay}</p>
+                        <p className="text-xs text-neutral-500 dark:text-neutral-500">Per day</p>
+                        <p className="text-lg font-bold text-neutral-900 dark:text-neutral-100">₹{vehicle.pricePerDay}</p>
                       </div>
                       <Link to={`/vehicles/${vehicle.id}`}>
-                        <button disabled={!vehicle.available} className={`px-5 py-2 rounded-xl text-sm font-medium transition-all ${vehicle.available ? 'bg-neutral-100 hover:bg-white text-neutral-900' : 'bg-neutral-800 text-neutral-500 cursor-not-allowed'}`}>
+                        <button disabled={!vehicle.available} className={`px-5 py-2 rounded-xl text-sm font-medium transition-all ${vehicle.available ? 'bg-neutral-100 hover:bg-white text-neutral-900' : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-500 cursor-not-allowed'}`}>
                           {vehicle.available ? 'Book Now' : 'Unavailable'}
                         </button>
                       </Link>
@@ -167,10 +167,10 @@ const Wishlist = () => {
             </AnimatePresence>
           </div>
         ) : (
-          <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-16 text-center">
+          <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-16 text-center">
             <Heart className="w-14 h-14 text-neutral-700 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-neutral-200 mb-2">Your wishlist is empty</h3>
-            <p className="text-sm text-neutral-500 mb-6 max-w-sm mx-auto">Start adding vehicles to your wishlist to keep track of your favorites</p>
+            <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 mb-2">Your wishlist is empty</h3>
+            <p className="text-sm text-neutral-500 dark:text-neutral-500 mb-6 max-w-sm mx-auto">Start adding vehicles to your wishlist to keep track of your favorites</p>
             <Link to="/browse">
               <button className="bg-neutral-100 hover:bg-white text-neutral-900 font-semibold px-6 py-3 rounded-xl text-sm transition-all">
                 Browse Vehicles

@@ -60,7 +60,7 @@ const AdminAnalytics = () => {
         <Stack spacing="xl">
           <div>
             <h1 className="text-3xl font-bold text-white mb-1">Analytics</h1>
-            <p className="text-sm text-neutral-400">Live data from Firebase</p>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400">Live data from Firebase</p>
           </div>
 
           {/* Stats */}
@@ -75,9 +75,9 @@ const AdminAnalytics = () => {
                 <Card variant="glass" padding="lg">
                   <div className="flex items-center justify-between">
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs text-neutral-400 mb-1 truncate">{stat.label}</p>
+                      <p className="text-xs text-neutral-600 dark:text-neutral-400 mb-1 truncate">{stat.label}</p>
                       <p className="text-xl sm:text-2xl font-bold text-white truncate">{stat.value}</p>
-                      {stat.sub && <p className="text-xs text-neutral-500 mt-0.5 truncate">{stat.sub}</p>}
+                      {stat.sub && <p className="text-xs text-neutral-500 dark:text-neutral-500 mt-0.5 truncate">{stat.sub}</p>}
                     </div>
                     <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r ${stat.color} rounded-xl flex items-center justify-center text-white flex-shrink-0 ml-2`}>
                       <stat.icon size={20} />
@@ -96,12 +96,12 @@ const AdminAnalytics = () => {
                 <h2 className="text-lg font-semibold text-white">Monthly Revenue</h2>
               </div>
               {monthlyRevenue.every(m => m.revenue === 0) ? (
-                <div className="h-40 flex items-center justify-center text-neutral-500 text-sm">No revenue data yet</div>
+                <div className="h-40 flex items-center justify-center text-neutral-500 dark:text-neutral-500 text-sm">No revenue data yet</div>
               ) : (
                 <div className="flex items-end space-x-2 h-40">
                   {monthlyRevenue.map((m, i) => (
                     <div key={i} className="flex-1 flex flex-col items-center">
-                      <div className="text-[10px] text-neutral-400 mb-1">
+                      <div className="text-[10px] text-neutral-600 dark:text-neutral-400 mb-1">
                         {m.revenue > 0 ? `₹${(m.revenue / 1000).toFixed(0)}k` : ''}
                       </div>
                       <motion.div
@@ -110,7 +110,7 @@ const AdminAnalytics = () => {
                         transition={{ delay: i * 0.1, duration: 0.6 }}
                         className="w-full bg-primary-700 hover:bg-primary-600 rounded-t-md transition-colors"
                       />
-                      <div className="text-[10px] text-neutral-500 mt-1">{m.month}</div>
+                      <div className="text-[10px] text-neutral-500 dark:text-neutral-500 mt-1">{m.month}</div>
                     </div>
                   ))}
                 </div>
@@ -124,12 +124,12 @@ const AdminAnalytics = () => {
                 <h2 className="text-lg font-semibold text-white">Monthly Bookings</h2>
               </div>
               {monthlyBookings.every(m => m.bookings === 0) ? (
-                <div className="h-40 flex items-center justify-center text-neutral-500 text-sm">No booking data yet</div>
+                <div className="h-40 flex items-center justify-center text-neutral-500 dark:text-neutral-500 text-sm">No booking data yet</div>
               ) : (
                 <div className="flex items-end space-x-2 h-40">
                   {monthlyBookings.map((m, i) => (
                     <div key={i} className="flex-1 flex flex-col items-center">
-                      <div className="text-[10px] text-neutral-400 mb-1">
+                      <div className="text-[10px] text-neutral-600 dark:text-neutral-400 mb-1">
                         {m.bookings > 0 ? m.bookings : ''}
                       </div>
                       <motion.div
@@ -138,7 +138,7 @@ const AdminAnalytics = () => {
                         transition={{ delay: i * 0.1, duration: 0.6 }}
                         className="w-full bg-secondary-700 hover:bg-secondary-600 rounded-t-md transition-colors"
                       />
-                      <div className="text-[10px] text-neutral-500 mt-1">{m.month}</div>
+                      <div className="text-[10px] text-neutral-500 dark:text-neutral-500 mt-1">{m.month}</div>
                     </div>
                   ))}
                 </div>
@@ -151,7 +151,7 @@ const AdminAnalytics = () => {
             <Card variant="glass" padding="lg">
               <h2 className="text-lg font-semibold text-white mb-4">Vehicle Types</h2>
               {typeBreakdown.length === 0 ? (
-                <p className="text-neutral-500 text-sm">No vehicles yet</p>
+                <p className="text-neutral-500 dark:text-neutral-500 text-sm">No vehicles yet</p>
               ) : (
                 <div className="space-y-3">
                   {typeBreakdown.map(([type, count]) => {
@@ -160,10 +160,10 @@ const AdminAnalytics = () => {
                     return (
                       <div key={type}>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-neutral-300 capitalize">{type}</span>
-                          <span className="text-neutral-400">{count} ({pct}%)</span>
+                          <span className="text-neutral-700 dark:text-neutral-300 capitalize">{type}</span>
+                          <span className="text-neutral-600 dark:text-neutral-400">{count} ({pct}%)</span>
                         </div>
-                        <div className="h-2 bg-neutral-800 rounded-full overflow-hidden">
+                        <div className="h-2 bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden">
                           <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${pct}%` }}
@@ -182,7 +182,7 @@ const AdminAnalytics = () => {
             <Card variant="glass" padding="lg">
               <h2 className="text-lg font-semibold text-white mb-4">Booking Status</h2>
               {statusBreakdown.length === 0 ? (
-                <p className="text-neutral-500 text-sm">No bookings yet</p>
+                <p className="text-neutral-500 dark:text-neutral-500 text-sm">No bookings yet</p>
               ) : (
                 <div className="space-y-3">
                   {statusBreakdown.map(([status, count]) => {
@@ -191,10 +191,10 @@ const AdminAnalytics = () => {
                     return (
                       <div key={status}>
                         <div className="flex justify-between text-sm mb-1">
-                          <span className="text-neutral-300 capitalize">{status}</span>
-                          <span className="text-neutral-400">{count} ({pct}%)</span>
+                          <span className="text-neutral-700 dark:text-neutral-300 capitalize">{status}</span>
+                          <span className="text-neutral-600 dark:text-neutral-400">{count} ({pct}%)</span>
                         </div>
-                        <div className="h-2 bg-neutral-800 rounded-full overflow-hidden">
+                        <div className="h-2 bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden">
                           <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${pct}%` }}

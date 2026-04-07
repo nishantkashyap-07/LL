@@ -46,17 +46,17 @@ const SellerVehicles = () => {
     }
   };
 
-  if (loading) return <div className="pt-20 min-h-screen bg-neutral-950 flex items-center justify-center"><LoadingSpinner size="lg" /></div>;
+  if (loading) return <div className="pt-20 min-h-screen bg-neutral-50 dark:bg-neutral-950 flex items-center justify-center"><LoadingSpinner size="lg" /></div>;
 
   return (
-    <div className="pt-20 min-h-screen bg-neutral-950">
+    <div className="pt-20 min-h-screen bg-neutral-50 dark:bg-neutral-950">
       <MetaTags title="My Vehicles" description="Manage your vehicle listings" />
 
       <div className="container-elegant py-12">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-neutral-50 mb-1">My Vehicles</h1>
-            <p className="text-neutral-500 text-sm">Manage your vehicle listings</p>
+            <p className="text-neutral-500 dark:text-neutral-500 text-sm">Manage your vehicle listings</p>
           </div>
           <Link to="/seller/vehicles/new">
             <button className="flex items-center gap-2 bg-neutral-100 hover:bg-white text-neutral-900 font-semibold px-5 py-2.5 rounded-xl text-sm transition-all">
@@ -66,9 +66,9 @@ const SellerVehicles = () => {
         </div>
 
         {vehicles.length === 0 ? (
-          <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-16 text-center">
+          <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-16 text-center">
             <div className="text-5xl mb-4">🚗</div>
-            <h3 className="text-base font-semibold text-neutral-300 mb-2">No vehicles listed yet</h3>
+            <h3 className="text-base font-semibold text-neutral-700 dark:text-neutral-300 mb-2">No vehicles listed yet</h3>
             <p className="text-sm text-neutral-600 mb-6">Add your first vehicle to start earning</p>
             <Link to="/seller/vehicles/new">
               <button className="bg-neutral-100 hover:bg-white text-neutral-900 font-semibold px-6 py-3 rounded-xl text-sm transition-all">
@@ -84,40 +84,40 @@ const SellerVehicles = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
-                className="bg-neutral-900 border border-neutral-800 rounded-2xl overflow-hidden hover:border-neutral-700 transition-all"
+                className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden hover:border-neutral-200 dark:border-neutral-700 transition-all"
               >
-                <div className="relative aspect-video bg-neutral-800">
+                <div className="relative aspect-video bg-neutral-100 dark:bg-neutral-800">
                   {vehicle.image && <img src={vehicle.image} alt={vehicle.name} className="w-full h-full object-cover" />}
                   <div className="absolute top-3 right-3">
-                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium backdrop-blur-sm border ${vehicle.status === 'active' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : 'bg-neutral-500/20 text-neutral-400 border-neutral-500/30'}`}>
+                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium backdrop-blur-sm border ${vehicle.status === 'active' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : 'bg-neutral-500/20 text-neutral-600 dark:text-neutral-400 border-neutral-500/30'}`}>
                       {vehicle.status}
                     </span>
                   </div>
                 </div>
 
                 <div className="p-5">
-                  <p className="text-xs text-neutral-500 mb-0.5">{vehicle.type}</p>
-                  <h3 className="text-base font-bold text-neutral-100 mb-1">{vehicle.name}</h3>
-                  <div className="flex items-center gap-3 text-xs text-neutral-500 mb-4">
+                  <p className="text-xs text-neutral-500 dark:text-neutral-500 mb-0.5">{vehicle.type}</p>
+                  <h3 className="text-base font-bold text-neutral-900 dark:text-neutral-100 mb-1">{vehicle.name}</h3>
+                  <div className="flex items-center gap-3 text-xs text-neutral-500 dark:text-neutral-500 mb-4">
                     <span>★ {vehicle.rating}</span>
                     <span>·</span>
                     <span>{vehicle.bookings} bookings</span>
                   </div>
 
-                  <div className="flex items-center justify-between pt-3 border-t border-neutral-800">
+                  <div className="flex items-center justify-between pt-3 border-t border-neutral-200 dark:border-neutral-800">
                     <div>
-                      <p className="text-xs text-neutral-500">Per day</p>
-                      <p className="text-lg font-bold text-neutral-100">₹{vehicle.pricePerDay}</p>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-500">Per day</p>
+                      <p className="text-lg font-bold text-neutral-900 dark:text-neutral-100">₹{vehicle.pricePerDay}</p>
                     </div>
                     <div className="flex items-center gap-1.5">
                       <Link to={`/vehicles/${vehicle.id}`}>
-                        <button className="p-2 bg-neutral-800 hover:bg-neutral-700 rounded-lg transition-colors">
-                          <Eye size={15} className="text-neutral-400" />
+                        <button className="p-2 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-lg transition-colors">
+                          <Eye size={15} className="text-neutral-600 dark:text-neutral-400" />
                         </button>
                       </Link>
                       <Link to={`/seller/vehicles/${vehicle.id}/edit`}>
-                        <button className="p-2 bg-neutral-800 hover:bg-neutral-700 rounded-lg transition-colors">
-                          <Edit size={15} className="text-neutral-400" />
+                        <button className="p-2 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-lg transition-colors">
+                          <Edit size={15} className="text-neutral-600 dark:text-neutral-400" />
                         </button>
                       </Link>
                       <button onClick={() => handleDelete(vehicle.id)} className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg transition-colors">

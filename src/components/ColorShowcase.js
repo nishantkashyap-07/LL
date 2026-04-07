@@ -166,7 +166,7 @@ const ColorShowcase = () => {
                       <div className={`w-12 h-12 ${color.class} rounded-lg shadow-lg`}></div>
                       <div>
                         <div className="font-medium">{palette.name} {color.shade}</div>
-                        <div className="text-sm text-neutral-500 dark:text-neutral-400">
+                        <div className="text-sm text-neutral-500 dark:text-neutral-500 dark:text-neutral-400">
                           {color.hex}
                         </div>
                       </div>

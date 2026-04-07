@@ -45,7 +45,7 @@ const WishlistButton = ({ vehicleId, className = '', compact = false }) => {
       whileTap={{ scale: 0.9 }}
       onClick={toggleWishlist}
       disabled={loading}
-      className={`transition-colors ${compact ? 'p-2 bg-black/40 backdrop-blur-md rounded-lg border border-white/10 hover:bg-black/60' : 'p-2.5 bg-neutral-800 hover:bg-neutral-700 rounded-xl'} ${className}`}
+      className={`transition-colors ${compact ? 'p-2 bg-black/40 backdrop-blur-md rounded-lg border border-white/10 hover:bg-black/60' : 'p-2.5 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-xl'} ${className}`}
     >
       <motion.div
         animate={{ scale: isWishlisted ? [1, 1.3, 1] : 1 }}
@@ -53,7 +53,7 @@ const WishlistButton = ({ vehicleId, className = '', compact = false }) => {
       >
         <Heart
           className={`w-4 h-4 transition-colors ${
-            isWishlisted ? 'text-error-400 fill-current' : 'text-neutral-400 hover:text-error-400'
+            isWishlisted ? 'text-error-400 fill-current' : 'text-neutral-600 dark:text-neutral-400 hover:text-error-400'
           }`}
         />
       </motion.div>
